@@ -11,12 +11,12 @@ then
     echo "PostgreSQL started"
 fi
 
-uv run python manage.py flush --no-input
+#uv run python manage.py flush --no-input
 uv run python manage.py migrate
 uv run python manage.py createsuperuser --noinput
 
 # load initial data
-uv run python manage.py loaddata base-data south-america
+uv run python manage.py loaddata base-data
 
 # update sequences to avoid conflicting primary keys from the initial data
 #uv run python manage.py sqlsequencereset travel | uv run python manage.py dbshell

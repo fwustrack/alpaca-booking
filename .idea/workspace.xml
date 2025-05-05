@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c129de9c-7504-44fc-a110-b02af5e27211" name="Changes" comment="Initial commit">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entrypoint.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/alpakabooking.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/alpakabooking.iml" afterDir="false" />
+    <list default="true" id="c129de9c-7504-44fc-a110-b02af5e27211" name="Changes" comment="update gitignore and add env file">
+      <change afterPath="$PROJECT_DIR$/alpacabooking/fixtures/base-data.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpacabooking/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/alpacabooking/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpacabooking/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/alpacabooking/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entrypoint.sh" beforeDir="false" afterPath="$PROJECT_DIR$/entrypoint.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rosenhof/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/rosenhof/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uv.lock" beforeDir="false" afterPath="$PROJECT_DIR$/uv.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,6 +29,7 @@
         <entry key="VIEW" value="true" />
       </map>
     </option>
+    <option name="groupType" value="BY_APPS" />
     <option name="version" value="1" />
   </component>
   <component name="Git.Settings">
@@ -173,7 +172,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1746446867015</updated>
-      <workItem from="1746446868043" duration="4243000" />
+      <workItem from="1746446868043" duration="9168000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -199,7 +198,23 @@
       <option name="project" value="LOCAL" />
       <updated>1746447730125</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="setup db connection and local docker build for development">
+      <option name="closed" value="true" />
+      <created>1746451313878</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1746451313878</updated>
+    </task>
+    <task id="LOCAL-00005" summary="update gitignore and add env file">
+      <option name="closed" value="true" />
+      <created>1746451531778</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1746451531778</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,6 +233,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+    <MESSAGE value="setup db connection and local docker build for development" />
+    <MESSAGE value="update gitignore and add env file" />
+    <option name="LAST_COMMIT_MESSAGE" value="update gitignore and add env file" />
   </component>
 </project>

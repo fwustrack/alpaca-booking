@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c129de9c-7504-44fc-a110-b02af5e27211" name="Changes" comment="update gitignore and add env file">
-      <change afterPath="$PROJECT_DIR$/alpacabooking/fixtures/base-data.yaml" afterDir="false" />
+    <list default="true" id="c129de9c-7504-44fc-a110-b02af5e27211" name="Changes" comment="create models and fixtures">
+      <change afterPath="$PROJECT_DIR$/alpacabooking/serializers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/alpacabooking/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alpacabooking/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/alpacabooking/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alpacabooking/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/alpacabooking/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entrypoint.sh" beforeDir="false" afterPath="$PROJECT_DIR$/entrypoint.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uv.lock" beforeDir="false" afterPath="$PROJECT_DIR$/uv.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alpacabooking/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/alpacabooking/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rosenhof/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/rosenhof/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rosenhof/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/rosenhof/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,6 +117,8 @@
     <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
+          <option name="envFilePath" value="" />
+          <option name="commandLineOptions" value="--build" />
           <option name="sourceFilePath" value="docker-compose.yml" />
         </settings>
       </deployment>
@@ -149,6 +150,12 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Django Server.alpakabooking" />
+      <item itemvalue="Docker.docker-compose.yml.app-dev: Compose Deployment" />
+      <item itemvalue="Docker.docker-compose.yml.db: Compose Deployment" />
+      <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
@@ -172,7 +179,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1746446867015</updated>
-      <workItem from="1746446868043" duration="9168000" />
+      <workItem from="1746446868043" duration="11632000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -214,7 +221,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746451531778</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="create models and fixtures">
+      <option name="closed" value="true" />
+      <created>1746456417384</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1746456417384</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,6 +250,7 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value="setup db connection and local docker build for development" />
     <MESSAGE value="update gitignore and add env file" />
-    <option name="LAST_COMMIT_MESSAGE" value="update gitignore and add env file" />
+    <MESSAGE value="create models and fixtures" />
+    <option name="LAST_COMMIT_MESSAGE" value="create models and fixtures" />
   </component>
 </project>

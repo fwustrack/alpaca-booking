@@ -1,0 +1,30 @@
+services:
+  app-dev:
+    build: .
+    command: uv run python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./alpacabooking:/app/alpacabooking/
+      - ./rosenhof:/app/rosenhof/
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./env/dev.env
+      - ./env/secrets.dev.env
+    depends_on:
+      - db
+
+  db:
+    image: postgres:17
+    volumes:
+      - postgres_data_dev:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=ab_django
+      - POSTGRES_PASSWORD=ab_django
+      - POSTGRES_DB=ab_django_dev
+    # map db port for debugging by connecting to database from outside (e.g. intellij)
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data_dev:
+  staticfiles:

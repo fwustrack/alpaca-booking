@@ -2,7 +2,10 @@
 name = "alpakabooking"
 version = "0.1.0"
 description = "Add your description here"
-requires-python = ">=3.9"
+requires-python = ">=3.13"
 dependencies = [
-    "django>=4.2.20",
+    "django>=5.1.6",
+    "mypy>=1.15.0",
+    "djangorestframework>=3.15.2",
+    "psycopg2-binary>=2.9.10",
 ]

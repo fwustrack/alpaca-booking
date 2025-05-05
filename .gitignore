@@ -132,7 +132,6 @@ celerybeat.pid
 # Environments
 .env
 .venv
-env/
 venv/
 ENV/
 env.bak/
@@ -438,3 +437,7 @@ pyrightconfig.json
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/pycharm,python,osx,linux,django,visualstudiocode
+
+
+### Project specific
+env/secrets*.env

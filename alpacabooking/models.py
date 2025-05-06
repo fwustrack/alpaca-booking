@@ -64,6 +64,7 @@ class Booking(models.Model):
     plz = models.CharField(max_length=5)
     comment = models.TextField(blank=True)
     voucher = models.CharField(max_length=32, blank=True)
+    total_price = models.FloatField(default=0.0)
 
     def __str__(self):
         return f"{self._meta.object_name}(event={self.event}, lastname={self.lastname}, firstname={self.firstname})"

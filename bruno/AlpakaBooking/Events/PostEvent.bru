@@ -1,0 +1,21 @@
+meta {
+  name: PostEvent
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{url}}/api/events/
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "start_time": "2025-07-20T08:00:00Z",
+    "event_type": {
+      "name": "Weinwanderung",
+      "id": 1
+    }
+  }
+}

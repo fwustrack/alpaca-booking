@@ -1,29 +1,13 @@
 - model: alpacabooking.eventtype
   fields:
-    name: Weinwanderung
+    name: "Weinwanderung"
 - model: alpacabooking.eventtype
   fields:
-    name: Alpakerol Spritz Wanderung
+    name: "Alpakerol Spritz Wanderung"
 - model: alpacabooking.eventtype
   fields:
-    name: Meet & Greet
+    name: "Meet & Feed"
 
-- model: alpacabooking.event
-  fields:
-    event_type: [ "Weinwanderung" ]
-    start_time: 2025-05-20T10:00:00+02:00
-- model: alpacabooking.event
-  fields:
-    event_type: [ "Weinwanderung" ]
-    start_time: 2025-05-25T10:00:00+02:00
-- model: alpacabooking.event
-  fields:
-    event_type: [ "Alpakerol Spritz Wanderung" ]
-    start_time: 2025-05-29T10:00:00+02:00
-- model: alpacabooking.event
-  fields:
-    event_type: [ "Meet & Greet" ]
-    start_time: 2025-06-01T10:00:00+02:00
 - model: alpacabooking.tickettype
   fields:
     name: Erwachsener mit Alpaka

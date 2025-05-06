@@ -10,12 +10,11 @@ ENV PYTHONUNBUFFERED=1
 RUN apt-get update && apt-get dist-upgrade --yes && apt-get install netcat-openbsd postgresql-client --yes
 RUN pip install --upgrade pip
 RUN pip install uv --break-system-packages
-RUN cd ..
-COPY pyproject.toml uv.lock ./
-RUN uv sync
 
 ## copy project
-COPY . .
+RUN cd ..
+COPY pyproject.toml uv.lock env entrypoint.sh manage.py ./
+RUN uv sync
 RUN chmod +x entrypoint.sh
 
 ENTRYPOINT ["/app/entrypoint.sh"]

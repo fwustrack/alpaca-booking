@@ -23,6 +23,11 @@ class Event(models.Model):
     start_time = models.DateTimeField()
     event_type = models.ForeignKey('EventType', on_delete=models.CASCADE)
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['start_time', 'event_type'], name='unique_start_time_event_type')
+        ]
+
     def __str__(self):
         return self.event_type.name + " " + str(self.start_time)
 
@@ -33,6 +38,7 @@ class TicketType(models.Model):
     price = models.FloatField()
     resource_amount = models.IntegerField()
     event_type = models.ForeignKey('EventType', on_delete=models.CASCADE)
+
     def __str__(self):
         return self.name
 
@@ -56,8 +62,8 @@ class Booking(models.Model):
     street = models.CharField(max_length=32)
     city = models.CharField(max_length=32)
     plz = models.CharField(max_length=5)
-    comment = models.TextField(blank=True, null=True)
-    voucher = models.CharField(max_length=32, blank=True, null=True)
+    comment = models.TextField(blank=True)
+    voucher = models.CharField(max_length=32, blank=True)
 
     def __str__(self):
         return f"{self._meta.object_name}(event={self.event}, lastname={self.lastname}, firstname={self.firstname})"

@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils import timezone
 
 # Create your models here.
 
@@ -29,7 +29,7 @@ class Event(models.Model):
         ]
 
     def __str__(self):
-        return self.event_type.name + " " + str(self.start_time)
+        return self.event_type.name + " " + str(timezone.localtime(self.start_time))
 
 
 class TicketType(models.Model):

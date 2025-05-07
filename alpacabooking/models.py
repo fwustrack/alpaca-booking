@@ -44,6 +44,7 @@ class TicketType(models.Model):
 
 
 class Ticket(models.Model):
+    objects = models.Manager()
     ticket_type = models.ForeignKey('TicketType', on_delete=models.CASCADE)
     amount = models.IntegerField()
 
@@ -52,6 +53,7 @@ class Ticket(models.Model):
 
 
 class Booking(models.Model):
+    objects = models.Manager()
     event = models.ForeignKey('Event', on_delete=models.CASCADE)
     tickets = models.ManyToManyField('Ticket')
     title = models.CharField(max_length=32)

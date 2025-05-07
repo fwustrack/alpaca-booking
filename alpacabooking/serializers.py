@@ -43,7 +43,6 @@ class BookingSerializer(serializers.ModelSerializer):
         model = Booking
         fields = ['event', 'tickets', 'title', 'lastname', 'firstname', 'email', 'phone_number', 'street', 'city',
                   'plz', 'comment', 'voucher', 'total_price']
-        read_only_fields = ['total_price']
 
     def get_total_price(self, obj):
         return BookingService.calculate_total_price(obj)

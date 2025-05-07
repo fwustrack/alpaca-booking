@@ -11,3 +11,21 @@
       [ "change_booking", "alpacabooking", "booking" ],
       [ "delete_booking", "alpacabooking", "booking" ],
     ]
+- model: auth.user
+  fields:
+    username: "laura"
+    password: "pbkdf2_sha256$1000000$gWCikAJQBYjDnT7Y8EneCz$YTvh6Mv0brfpoSAIIQE1HoeS7q27zt+BAO4+8dSvWr8="
+    is_superuser: false
+    is_staff: false
+    is_active: true
+    email: "laura@example.com"
+    groups:
+      - ["backoffice"]
+- model: auth.user
+  fields:
+    username: "felix"
+    password: "pbkdf2_sha256$1000000$gWCikAJQBYjDnT7Y8EneCz$YTvh6Mv0brfpoSAIIQE1HoeS7q27zt+BAO4+8dSvWr8="
+    is_superuser: false
+    is_staff: false
+    is_active: true
+    email: "laura@example.com"

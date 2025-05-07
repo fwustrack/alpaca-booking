@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework import viewsets
+from rest_framework.exceptions import PermissionDenied
 
 from alpacabooking.models import Event, EventType, TicketType, Booking
 from alpacabooking.serializers import EventSerializer, EventTypeSerializer, TicketTypeSerializer, BookingSerializer
@@ -37,4 +38,4 @@ class BookingViewSet(viewsets.ModelViewSet):
         user = self.request.user
         if user.has_perm('alpacabooking.view_booking'):
             return Booking.objects.all()
-        return Booking.objects.none()
+        raise PermissionDenied("Kein Zugriff.")

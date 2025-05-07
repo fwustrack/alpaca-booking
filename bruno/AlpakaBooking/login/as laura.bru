@@ -1,21 +1,23 @@
 meta {
-  name: token refresh
+  name: as laura
   type: http
-  seq: 4
+  seq: 3
 }
 
 post {
-  url: {{url}}/api/token/refresh/
+  url: {{url}}/api/token/
   body: json
   auth: inherit
 }
 
 body:json {
   {
-      "refresh": "{{refresh_token}}"
+      "username": "laura",
+      "password": "rosenhof"
   }
 }
 
 script:post-response {
   bru.setVar('access_token', res.body.access);
+  bru.setVar('refresh_token', res.body.refresh);
 }

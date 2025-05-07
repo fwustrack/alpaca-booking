@@ -1,0 +1,21 @@
+meta {
+  name: token refresh
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{url}}/api/token/refresh/
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "refresh": "{{refresh_token}}"
+  }
+}
+
+script:post-response {
+  bru.setVar('access_token', res.body.access);
+}

@@ -1,4 +1,3 @@
-import datetime
 import logging
 from datetime import date, datetime, time, timedelta
 
@@ -29,7 +28,7 @@ class Command(BaseCommand):
     def create_event(self, event_type: EventType, in_days: int, hour: int) -> None:
         naive_start_time = datetime.combine(date.today() + timedelta(days=in_days), time(hour))
         start_time = timezone.make_aware(naive_start_time)
-        if len(Event.objects.filter(event_type=event_type, start_time=start_time)) > 0:
+        if Event.objects.filter(event_type=event_type, start_time=start_time).exists():
             logger.info("Event already exists")
         else:
             ev = Event()

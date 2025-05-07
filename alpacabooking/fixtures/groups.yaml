@@ -1,0 +1,13 @@
+- model: auth.group
+  fields:
+    name: "backoffice"
+    permissions: [
+      [ "view_ticket", "alpacabooking", "ticket" ],
+      [ "add_ticket", "alpacabooking", "ticket" ],
+      [ "change_ticket", "alpacabooking", "ticket" ],
+      [ "delete_ticket", "alpacabooking", "ticket" ],
+      [ "view_booking", "alpacabooking", "booking" ],
+      [ "add_booking", "alpacabooking", "booking" ],
+      [ "change_booking", "alpacabooking", "booking" ],
+      [ "delete_booking", "alpacabooking", "booking" ],
+    ]

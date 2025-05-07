@@ -1,3 +1,10 @@
+- model: alpacabooking.resourcetype
+  fields:
+    name: "Alpaka"
+- model: alpacabooking.resourcetype
+  fields:
+    name: "Person"
+
 - model: alpacabooking.eventtype
   fields:
     name: "Weinwanderung"
@@ -8,31 +15,38 @@
   fields:
     name: "Meet & Feed"
 
+- model: alpacabooking.resourcecapacity
+  fields:
+    event_type: ["Weinwanderung"]
+    resource_type: ["Alpaka"]
+    quantity: 14
+- model: alpacabooking.resourcecapacity
+  fields:
+    event_type: ["Weinwanderung"]
+    resource_type: ["Person"]
+    quantity: 30
+
 - model: alpacabooking.tickettype
   fields:
     name: Erwachsener mit Alpaka
     description: "Erwachsener mit Alpaka"
     price: 50.00
-    resource_amount: 1
     event_type: [ "Weinwanderung" ]
 - model: alpacabooking.tickettype
   fields:
     name: Erwachsener ohne Alpaka
     description: "Erwachsener ohne Alpaka"
     price: 30.00
-    resource_amount: 0
     event_type: [ "Weinwanderung" ]
 - model: alpacabooking.tickettype
   fields:
     name: Erwachsener mit Alpaka
     description: "Erwachsener mit Alpaka"
     price: 40.00
-    resource_amount: 1
     event_type: [ "Alpakerol Spritz Wanderung" ]
 - model: alpacabooking.tickettype
   fields:
     name: Erwachsener ohne Alpaka
     description: "Erwachsener ohne Alpaka"
     price: 25.00
-    resource_amount: 0
     event_type: [ "Alpakerol Spritz Wanderung" ]

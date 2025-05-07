@@ -1,7 +1,6 @@
 # alpacabooking/services/booking_service.py
 from django.db.models import Sum, F
 from rest_framework.exceptions import ValidationError
-from alpacabooking.models import Booking, Ticket
 
 
 class BookingService:

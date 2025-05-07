@@ -2,6 +2,7 @@ from rest_framework import serializers
 
 from alpacabooking.models import Event, EventType, TicketType, Ticket, Booking
 from alpacabooking.booking_service import BookingService
+from rest_framework.fields import SerializerMethodField
 
 
 class EventTypeSerializer(serializers.HyperlinkedModelSerializer):
@@ -36,12 +37,16 @@ class TicketSerializer(serializers.ModelSerializer):
 
 class BookingSerializer(serializers.ModelSerializer):
     tickets = TicketSerializer(many=True)
+    total_price = SerializerMethodField()
 
     class Meta:
         model = Booking
         fields = ['event', 'tickets', 'title', 'lastname', 'firstname', 'email', 'phone_number', 'street', 'city',
                   'plz', 'comment', 'voucher', 'total_price']
         read_only_fields = ['total_price']
+
+    def get_total_price(self, obj):
+        return BookingService.calculate_total_price(obj)
 
     def create(self, validated_data):
         tickets_data = validated_data.pop('tickets')
@@ -51,5 +56,5 @@ class BookingSerializer(serializers.ModelSerializer):
         for ticket_data in tickets_data:
             ticket = Ticket.objects.create(**ticket_data)
             booking.tickets.add(ticket)
-        BookingService.calculate_total_price(booking)
+
         return booking

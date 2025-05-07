@@ -12,6 +12,7 @@ dependencies = [
     "pyyaml>=6.0.2",
     "pytest>=8.3.5",
     "pytest-django>=4.11.1",
+    "djangorestframework-simplejwt>=5.5.0",
 ]
 
 [tool.pytest.ini_options]

@@ -16,6 +16,4 @@ class BookingService:
         total = booking.tickets.aggregate(
             total_price=Sum(F('ticket_type__price') * F('amount'))
         )['total_price'] or 0.0
-        booking.total_price = total
-        booking.save()
         return total

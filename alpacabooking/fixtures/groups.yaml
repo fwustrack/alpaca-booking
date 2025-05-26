@@ -28,4 +28,4 @@
     is_superuser: false
     is_staff: false
     is_active: true
-    email: "laura@example.com"
+    email: "felix@example.com"

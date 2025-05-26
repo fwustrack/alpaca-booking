@@ -16,7 +16,7 @@ uv run python manage.py migrate
 uv run python manage.py createsuperuser --noinput
 
 # load initial data
-uv run python manage.py loaddata base-data
+uv run python manage.py loaddata base-data groups
 uv run python manage.py initialize-test-data
 
 # update sequences to avoid conflicting primary keys from the initial data

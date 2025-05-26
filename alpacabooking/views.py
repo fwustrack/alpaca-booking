@@ -5,7 +5,10 @@ from alpacabooking.serializers import EventSerializer, EventTypeSerializer, Tick
     AnimalSerializer
 from rest_framework.permissions import BasePermission
 
-
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
+from .serializers import UserRolesPermissionsSerializer
 # Create your views here.
 class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all()
@@ -41,3 +44,16 @@ class BookingViewSet(viewsets.ModelViewSet):
 class AnimalViewSet(viewsets.ModelViewSet):
     queryset = Animal.objects.all()
     serializer_class = AnimalSerializer
+
+class UserRolesPermissionsView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        data = {
+            "username": user.username,
+            "groups": list(user.groups.values_list("name", flat=True)),
+            "permissions": list(user.get_all_permissions()),
+        }
+        serializer = UserRolesPermissionsSerializer(data)
+        return Response(serializer.data)

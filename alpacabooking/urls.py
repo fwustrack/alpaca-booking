@@ -1,7 +1,8 @@
 from django.urls import path, include
 from rest_framework import routers
 
-from alpacabooking.views import EventTypeViewSet, EventViewSet, TicketTypeViewSet, BookingViewSet, AnimalViewSet
+from alpacabooking.views import EventTypeViewSet, EventViewSet, TicketTypeViewSet, BookingViewSet, AnimalViewSet, \
+    UserRolesPermissionsView
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
@@ -15,5 +16,6 @@ router.register(r'animals', AnimalViewSet)
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('me/', UserRolesPermissionsView.as_view()),
 ]

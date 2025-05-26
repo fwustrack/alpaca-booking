@@ -24,7 +24,7 @@ class TicketTypeSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = TicketType
-        fields = ['name', 'description', 'price', 'resource_amount', 'event_type', 'id']
+        fields = ['name', 'description', 'price',  'event_type', 'id']
 
 
 class TicketSerializer(serializers.ModelSerializer):
@@ -63,3 +63,8 @@ class AnimalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Animal
         fields = ['id', 'name', 'description', 'teaser', 'sponsorshipAvailable', 'hasCurrentSponsorship', 'sponsorName', 'sponsorCustomText']
+
+class UserRolesPermissionsSerializer(serializers.Serializer):
+    username = serializers.CharField()
+    groups = serializers.ListField(child=serializers.CharField())
+    permissions = serializers.ListField(child=serializers.CharField())

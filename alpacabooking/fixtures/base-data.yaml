@@ -78,3 +78,12 @@
     sponsorshipAvailable: false
     hasCurrentSponsorship: true
     sponsorName: "Michelle H."
+- model: alpacabooking.animal
+  fields:
+    id: 4
+    name: "Adam"
+    teaser: "Servus, ich bin's, der Adam."
+    description: "Ich bin auch ein Suri – Alpaka. Man erkennt mich daran, dass ich etwas dunkler als Dyonis bin UND ich bin definitiv der Verfressenste von allen."
+    sponsorshipAvailable: true
+    hasCurrentSponsorship: false
+

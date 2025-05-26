@@ -1,7 +1,7 @@
 // fe/src/app/auth/auth.service.ts
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, tap, Subject, filter, switchMap, take, finalize } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable, tap, Subject, filter, switchMap, take, finalize} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +11,11 @@ export class AuthService {
   private refreshInProgress = false;
   private refreshSubject = new Subject<string>();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   login(username: string, password: string): Observable<any> {
-    return this.http.post(this.apiUrl, { username, password }).pipe(
+    return this.http.post(this.apiUrl, {username, password}).pipe(
       tap((res: any) => {
         if (res && res.access) {
           localStorage.setItem('access_token', res.access);
@@ -26,6 +27,15 @@ export class AuthService {
     );
   }
 
+  isTokenValid(): boolean {
+    const token = localStorage.getItem('access_token');
+    if (!token) return false;
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    const exp = payload.exp;
+    const now = Math.floor(Date.now() / 1000);
+    return exp > now;
+  }
+
   refreshToken(refresh: string): Observable<any> {
     if (this.refreshInProgress) {
       // Warte auf das nächste neue Token
@@ -35,14 +45,14 @@ export class AuthService {
         switchMap(token => {
           localStorage.setItem('access_token', token);
           return new Observable(obs => {
-            obs.next({ access: token });
+            obs.next({access: token});
             obs.complete();
           });
         })
       );
     } else {
       this.refreshInProgress = true;
-      return this.http.post(`${this.apiUrl}refresh/`, { refresh }).pipe(
+      return this.http.post(`${this.apiUrl}refresh/`, {refresh}).pipe(
         tap((res: any) => {
           if (res && res.access) {
             localStorage.setItem('access_token', res.access);

@@ -17,13 +17,13 @@
 
 - model: alpacabooking.resourcecapacity
   fields:
-    event_type: ["Weinwanderung"]
-    resource_type: ["Alpaka"]
+    event_type: [ "Weinwanderung" ]
+    resource_type: [ "Alpaka" ]
     quantity: 14
 - model: alpacabooking.resourcecapacity
   fields:
-    event_type: ["Weinwanderung"]
-    resource_type: ["Person"]
+    event_type: [ "Weinwanderung" ]
+    resource_type: [ "Person" ]
     quantity: 30
 
 - model: alpacabooking.tickettype
@@ -50,3 +50,31 @@
     description: "Erwachsener ohne Alpaka"
     price: 25.00
     event_type: [ "Alpakerol Spritz Wanderung" ]
+
+- model: alpacabooking.animal
+  fields:
+    id: 1
+    name: "Zeus"
+    teaser: "Grüß Gott! Also... MICH!"
+    description: "Ich bin Zeus und springe jedem wegen meiner tollen Vließfarbe ins Auge. Grau und Flecken – das ist wirklich eine göttliche Farbe! Ich weiß, dass ich super aussehe. 😉"
+    sponsorshipAvailable: false
+    hasCurrentSponsorship: true
+    sponsorCustomText: "Die Patenschaft für das Jahr 2025 wurde von Sascha Köck an Nadine Schubert vergeben."
+
+- model: alpacabooking.animal
+  fields:
+    id: 2
+    name: "Nella"
+    teaser: "Hey ihr! Mein Name ist Nella."
+    description: "Also eigentlich Citronella. Ich bin die beste Freundin von der Puri. Wir kennen uns schon seit unserer Geburt. Ich habe ein kleines Handycap: Seit meiner Geburt stimmt da was mit meiner Hüfte nicht."
+    sponsorshipAvailable: false
+
+- model: alpacabooking.animal
+  fields:
+    id: 3
+    name: "Juri"
+    teaser: "Juhu, ich bin Juri!"
+    description: "Ich bin ein ganz gemütlicher kleiner, nein, großer Kerl! Geboren mit 10 kg hat sich mein Gewicht in den ersten 2 Lebensmonaten fast verdreifacht."
+    sponsorshipAvailable: false
+    hasCurrentSponsorship: true
+    sponsorName: "Michelle H."

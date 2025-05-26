@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "alpakabooking-fe": {
+    "fe": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/alpakabooking-fe",
+            "outputPath": "dist/fe",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "alpakabooking-fe:build:production"
+              "buildTarget": "fe:build:production"
             },
             "development": {
-              "buildTarget": "alpakabooking-fe:build:development"
+              "buildTarget": "fe:build:development"
             }
           },
           "defaultConfiguration": "development"

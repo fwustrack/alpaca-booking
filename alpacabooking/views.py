@@ -1,7 +1,8 @@
 from rest_framework import viewsets
 
-from alpacabooking.models import Event, EventType, TicketType, Booking
-from alpacabooking.serializers import EventSerializer, EventTypeSerializer, TicketTypeSerializer, BookingSerializer
+from alpacabooking.models import Event, EventType, TicketType, Booking, Animal
+from alpacabooking.serializers import EventSerializer, EventTypeSerializer, TicketTypeSerializer, BookingSerializer, \
+    AnimalSerializer
 from rest_framework.permissions import BasePermission
 
 
@@ -36,3 +37,7 @@ class BookingViewSet(viewsets.ModelViewSet):
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
     permission_classes = [BookingPermission]
+
+class AnimalViewSet(viewsets.ModelViewSet):
+    queryset = Animal.objects.all()
+    serializer_class = AnimalSerializer

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from alpacabooking.models import Event, EventType, TicketType, Ticket, Booking
+from alpacabooking.models import Event, EventType, TicketType, Ticket, Booking, Animal
 from alpacabooking.booking_service import BookingService
 from rest_framework.fields import SerializerMethodField
 
@@ -57,3 +57,9 @@ class BookingSerializer(serializers.ModelSerializer):
             booking.tickets.add(ticket)
 
         return booking
+
+
+class AnimalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Animal
+        fields = ['id', 'name', 'description', 'teaser', 'sponsorshipAvailable', 'hasCurrentSponsorship', 'sponsorName', 'sponsorCustomText']

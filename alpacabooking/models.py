@@ -147,3 +147,20 @@ class Booking(models.Model):
 
     def __str__(self):
         return f"{self._meta.object_name}(event={self.event}, lastname={self.lastname}, firstname={self.firstname})"
+
+
+class Animal(models.Model):
+    objects =models.Manager()
+    name = models.CharField(max_length=32, unique=True)
+    description = models.TextField(blank=True)
+    teaser = models.TextField(blank=True)
+    sponsorshipAvailable = models.BooleanField(default=False)
+    hasCurrentSponsorship = models.BooleanField(default=False)
+    sponsorName = models.CharField(max_length=128, blank=True)
+    sponsorCustomText = models.TextField(blank=True)
+
+    def natural_key(self):
+        return (self.name)
+
+    def __str__(self):
+        return self.name

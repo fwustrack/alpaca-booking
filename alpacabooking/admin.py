@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from .models import Event, EventType, Booking, TicketType, Ticket, ResourceConsumption, ResourceType, ResourceCapacity
+from .models import Event, EventType, Booking, TicketType, Ticket, ResourceConsumption, ResourceType, ResourceCapacity, \
+    Animal
 
 # Register your models here.
 admin.site.register(Event)
@@ -11,3 +12,4 @@ admin.site.register(Ticket)
 admin.site.register(ResourceType)
 admin.site.register(ResourceCapacity)
 admin.site.register(ResourceConsumption)
+admin.site.register(Animal)

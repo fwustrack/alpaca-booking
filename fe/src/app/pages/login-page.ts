@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from '../components/login/login.component';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
+import { LoginComponent } from '../components/login/login.component';
 
 @Component({
   standalone: true,
@@ -17,7 +17,7 @@ import { AuthService } from '../auth/auth.service';
 export class LoginPage {
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
   ) {
     if (this.authService.isTokenValid()) {
       this.router.navigate(['/']);

@@ -1,20 +1,18 @@
-import {Component, inject} from '@angular/core';
-import {ReactiveFormsModule, FormBuilder} from '@angular/forms';
-import {Router} from '@angular/router';
-import {AuthService} from '../../auth/auth.service';
-import {PasswordModule} from 'primeng/password';
-import { InputTextModule }  from 'primeng/inputtext';
-import { IftaLabelModule } from 'primeng/iftalabel';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
+import { IftaLabelModule } from 'primeng/iftalabel';
+import { InputTextModule } from 'primeng/inputtext';
+import { PasswordModule } from 'primeng/password';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   standalone: true,
   selector: 'app-login',
-  imports: [PasswordModule,
-    ReactiveFormsModule, InputTextModule, IftaLabelModule, ButtonModule
-  ],
+  imports: [PasswordModule, ReactiveFormsModule, InputTextModule, IftaLabelModule, ButtonModule],
   templateUrl: './login.component.html',
-    styleUrl: './login.component.scss'
+  styleUrl: './login.component.scss',
 })
 export class LoginComponent {
   private fb = inject(FormBuilder);
@@ -27,7 +25,7 @@ export class LoginComponent {
 
   onSubmit() {
     console.log('LoginComponent.onSubmit');
-    const {username, password} = this.loginForm.value;
+    const { username, password } = this.loginForm.value;
     if (!username || !password) {
       alert('Bitte E-Mail und Passwort eingeben');
       return;
@@ -38,7 +36,7 @@ export class LoginComponent {
       },
       error: () => {
         alert('Login fehlgeschlagen');
-      }
+      },
     });
   }
 }

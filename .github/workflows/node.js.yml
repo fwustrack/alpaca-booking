@@ -1,0 +1,38 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them,
+# build the source code and run a format check.
+# It triggers on pull requests to the main branch.
+
+name: Node.js CI
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build_and_test:
+
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./fe
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js version 20
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: 'npm'
+        cache-dependency-path: fe/package-lock.json
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build project
+      run: npm run build
+
+    - name: Check formatting
+      run: npm run format:check

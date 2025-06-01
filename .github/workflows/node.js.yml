@@ -13,6 +13,10 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: ./fe
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -24,13 +28,10 @@ jobs:
         cache: 'npm'
 
     - name: Install dependencies
-      working-directory: ./fe
       run: npm ci
 
     - name: Build project
-      working-directory: ./fe
       run: npm run build
 
     - name: Check formatting
-      working-directory: ./fe
       run: npm run format:check

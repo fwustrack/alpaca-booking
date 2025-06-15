@@ -2,15 +2,17 @@
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  gap: 1rem;
-  padding: 1.75rem;
+  gap: var(--spacer-3);
+  padding: var(--spacer-5);
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
   box-shadow: 0 0 1.25rem rgba(0, 0, 0, 0.1);
   z-index: 1000;
   position: sticky;
-  margin: 1.75rem 10vw 0 10vw;
-  border-radius: 9999px;
+  top: var(--spacer-5);
+  margin: var(--spacer-5) 10vw 0 10vw;
+  border-radius: var(--border-radius-round);
+  font-weight: 500;
 }
 
 .logo {
@@ -18,11 +20,22 @@
   font-weight: 600;
   color: var(--text-primary);
   text-wrap: nowrap;
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: var(--spacer-2);
+
+    img {
+      width: 2rem;
+      aspect-ratio: 1;
+    }
+  }
 }
 
 nav ul {
   display: flex;
-  gap: 1.5rem;
+  gap: var(--spacer-4);
   align-items: center;
   list-style: none;
   padding-inline-start: 0;

@@ -1,3 +1,13 @@
-<div class="login-page-container">
-  <app-login></app-login>
-</div>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <p-iftalabel>
+    <input type="text" pInputText formControlName="username" />
+    <label for="username">Benutzername</label>
+  </p-iftalabel>
+
+  <p-iftalabel>
+    <p-password formControlName="password" [feedback]="false" />
+    <label for="username">Passwort</label>
+  </p-iftalabel>
+
+  <p-button label="Login" type="submit" />
+</form>

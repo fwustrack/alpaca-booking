@@ -1,8 +1,6 @@
-<div class="animal-page-container">
-  <h1>Unsere Tiere</h1>
-  <div class="animal-grid">
-    @for (animal of animals(); track animal) {
-      <app-animal-card [animal]="animal"></app-animal-card>
-    }
-  </div>
+<h1>Unsere Tiere</h1>
+<div class="animal-grid">
+  @for (animal of animals(); track animal) {
+    <app-animal-card [animal]="animal"></app-animal-card>
+  }
 </div>

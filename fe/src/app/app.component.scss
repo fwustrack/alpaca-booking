@@ -1,19 +1,11 @@
-.logo {
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin-right: 2rem;
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
 }
 
 .content {
-  padding: 1rem;
-}
-
-@media (max-width: 600px) {
-  .logo {
-    font-size: 1rem;
-    margin-right: 1rem;
-  }
-  .content {
-    padding: 0.5rem;
-  }
+  width: var(--max-width);
+  margin: var(--spacer-7) auto;
+  flex: 1;
 }

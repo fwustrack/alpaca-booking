@@ -8,32 +8,31 @@
 }
 
 .card-header {
-  padding: 1rem;
+  padding: var(--spacer-3);
   background-color: var(--surface-ground);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: var(--spacer-3);
 
   h2 {
-    margin: 0;
     color: var(--surface-900);
     font-size: 1.5rem;
   }
 }
 
 .sponsorship-info {
-  margin-top: 1rem;
-  padding-top: 1rem;
+  margin-top: var(--spacer-3);
+  padding-top: var(--spacer-3);
   border-top: 1px solid var(--surface-200);
 
   .current-sponsor {
-    margin-bottom: 1rem;
+    margin-bottom: var(--spacer-3);
   }
 
   .sponsor-message {
     font-style: italic;
     color: var(--text-color-secondary);
-    margin-top: 0.5rem;
+    margin-top: var(--spacer-2);
   }
 }

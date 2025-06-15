@@ -1,18 +1,12 @@
-.animal-page-container {
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
 h1 {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacer-5);
   color: var(--surface-900);
 }
 
 .animal-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, 300px);
-  gap: 2rem;
+  gap: var(--spacer-5);
   justify-content: center;
 }

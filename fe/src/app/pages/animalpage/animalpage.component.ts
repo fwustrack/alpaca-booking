@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AnimalCardComponent } from '../../components/animal-card/animal-card.component';
-import { Animal } from '../../models/animal.model';
-import { AnimalApiService } from '../../services/animal-api.service';
+import { AnimalService } from '../../services/animal.service';
 
 @Component({
   selector: 'app-animalpage',
@@ -9,14 +8,8 @@ import { AnimalApiService } from '../../services/animal-api.service';
   templateUrl: './animalpage.component.html',
   styleUrl: './animalpage.component.scss',
 })
-export class AnimalpageComponent implements OnInit {
-  animals: Animal[] = [];
+export class AnimalpageComponent {
+  private animalService = inject(AnimalService);
 
-  constructor(private animalService: AnimalApiService) {}
-
-  ngOnInit() {
-    this.animalService.getAll().subscribe((data) => {
-      this.animals = data;
-    });
-  }
+  animals = this.animalService.animals;
 }

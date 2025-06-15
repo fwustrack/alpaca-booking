@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { TagModule } from 'primeng/tag';
@@ -11,5 +11,5 @@ import { Animal } from '../../models/animal.model';
   styleUrl: './animal-card.component.scss',
 })
 export class AnimalCardComponent {
-  @Input() animal!: Animal;
+  animal = input.required<Animal>();
 }

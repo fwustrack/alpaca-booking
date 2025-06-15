@@ -1,6 +1,8 @@
 <div class="animal-page-container">
   <h1>Unsere Tiere</h1>
   <div class="animal-grid">
-    <app-animal-card *ngFor="let animal of animals" [animal]="animal"> </app-animal-card>
+    @for (animal of animals(); track animal) {
+      <app-animal-card [animal]="animal"></app-animal-card>
+    }
   </div>
 </div>

@@ -1,11 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MenuItem } from 'primeng/api';
 import { MenubarModule } from 'primeng/menubar';
 import { HeaderComponent } from './components/header/header.component';
-import { Animal } from './models/animal.model';
-import { AnimalApiService } from './services/animal-api.service';
+import { ICON_CONFIG } from './config/icon.config';
 
 @Component({
   selector: 'app-root',
@@ -13,16 +11,6 @@ import { AnimalApiService } from './services/animal-api.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit {
-  animalService = inject(AnimalApiService);
-  animals: Animal[] = [];
-  menuItems: MenuItem[] = [
-    { label: 'Home', icon: 'pi pi-home', routerLink: '/' },
-    { label: 'Tiere', routerLink: '/animals' },
-    { label: 'Login', icon: 'pi pi-sign-in', routerLink: '/login' },
-  ];
-  ngOnInit(): void {
-    console.log('AppComponent.ngOnInit');
-    this.animalService.getAll().subscribe((animals) => (this.animals = animals));
-  }
+export class AppComponent {
+  readonly icons = ICON_CONFIG.icons;
 }

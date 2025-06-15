@@ -3,4 +3,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-primary);
 }

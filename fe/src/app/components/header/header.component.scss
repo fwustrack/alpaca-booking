@@ -21,9 +21,19 @@
 
 nav ul {
   display: flex;
+  gap: 1.5rem;
+  align-items: center;
   list-style: none;
-  gap: 1rem;
   padding-inline-start: 0;
+
+  li a {
+    color: var(--text-secondary);
+
+    &:hover,
+    &.active {
+      color: var(--accent-color);
+    }
+  }
 }
 
 .main-nav ul {
@@ -32,4 +42,8 @@ nav ul {
 
 .secondary-nav ul {
   justify-content: flex-end;
+}
+
+.socal-icon-link {
+  font-size: 1.25rem;
 }

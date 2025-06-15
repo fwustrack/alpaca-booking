@@ -3,12 +3,13 @@ import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { MenubarModule } from 'primeng/menubar';
+import { HeaderComponent } from './components/header/header.component';
 import { Animal } from './models/animal.model';
 import { AnimalApiService } from './services/animal-api.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, MenubarModule],
+  imports: [RouterOutlet, CommonModule, MenubarModule, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

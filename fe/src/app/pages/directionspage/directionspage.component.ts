@@ -5,5 +5,8 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './directionspage.component.html',
   styleUrl: './directionspage.component.scss',
+  host: {
+    class: 'content-container',
+  },
 })
 export class DirectionspageComponent {}

@@ -13,6 +13,9 @@ import { AuthService } from '../../auth/auth.service';
   imports: [PasswordModule, ReactiveFormsModule, InputTextModule, IftaLabelModule, ButtonModule],
   templateUrl: './loginpage.component.html',
   styleUrl: './loginpage.component.scss',
+  host: {
+    class: 'content-container',
+  },
 })
 export class LoginpageComponent {
   private fb = inject(FormBuilder);

@@ -7,6 +7,9 @@ import { AnimalService } from '../../services/animal.service';
   imports: [AnimalCardComponent],
   templateUrl: './animalpage.component.html',
   styleUrl: './animalpage.component.scss',
+  host: {
+    class: 'content-container',
+  },
 })
 export class AnimalpageComponent {
   private animalService = inject(AnimalService);

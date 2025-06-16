@@ -4,8 +4,14 @@
   min-height: 100dvh;
 }
 
-.content {
-  width: var(--max-width);
-  margin: var(--spacer-7) auto;
+:host ::ng-deep router-outlet + * {
   flex: 1;
+}
+
+.pre-header {
+  width: 100%;
+  height: calc(var(--header-height) / 2 + var(--spacer-5));
+  background: #fff;
+  position: fixed;
+  z-index: 1;
 }

@@ -1,4 +1,5 @@
-<app-header></app-header>
-<div class="content">
-  <router-outlet></router-outlet>
-</div>
+<div class="pre-header"></div>
+<!-- hides content that flows above header in round mode -->
+<app-header [isHomepage]="isHomepage()"></app-header>
+<router-outlet></router-outlet>
+<app-footer></app-footer>

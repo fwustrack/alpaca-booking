@@ -1,0 +1,71 @@
+<div class="hero-banner">
+  <img
+    src="images/homepage-banner.jpg"
+    alt="Foto von einem Alpaka"
+    class="hero-image"
+    aria-hidden="true" />
+
+  <div class="hero-overlay"></div>
+
+  <div class="hero-text">
+    <h1>Willkommen auf dem Rosenhof</h1>
+    <p>Erlebe unsere Alpakas hautnah!</p>
+  </div>
+</div>
+
+<div class="content-container homepage-sections">
+  <section class="feature-section">
+    <div class="feature-image">
+      <img
+        src="images/alpakas.jpg"
+        alt="Zwei flauschige Alpakas schauen freundlich in die Kamera" />
+    </div>
+    <div class="feature-text">
+      <h2>Willkommen bei den Alpakas vom Rosenhof</h2>
+      <p>Wir freuen uns, mit euch ein Alpaka-Abenteuer zu erleben.</p>
+      <p>
+        Unser Hof befindet sich im Lampertheimer Ortsteil "Rosengarten" nahe der Wormser
+        Rheinbrücke.
+      </p>
+      <p>
+        Wenn ihr Interesse daran habt, <a routerLink="/animals">unsere Tiere</a> live
+        kennenzulernen, findet ihr <a routerLink="/about">hier</a> unsere aktuellen Events und
+        Termine.
+      </p>
+      <p>
+        Schaut doch mal auf unserer Instagram-Seite vorbei, hier posten wir regelmäßige Updates und
+        Bilder rund um unsere Tiere.
+      </p>
+      <a
+        href="https://www.instagram.com/alpakas_vom_rosenhof"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="feature-button">
+        <fa-icon [icon]="icons.faInstagram"></fa-icon>
+        <span>Instagram</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="feature-section feature-section--reversed">
+    <div class="feature-text">
+      <h2>Weinwanderung</h2>
+      <p>
+        Entflieht dem Alltag und erlebt eine einzigartige Weinwanderung in Begleitung unserer
+        charmanten Alpakas. Wir führen euch auf idyllischen Wegen durch die weiten Felder rund um
+        Lampertheim Rosengarten. Spürt die beruhigende Anwesenheit der Tiere, während die Landschaft
+        an euch vorbeizieht. An ausgewählten Plätzen halten wir inne, um exzellente Weine aus der
+        Region zu verkosten – eine perfekte Kombination aus Naturerlebnis, Tierbegegnung und Genuss.
+      </p>
+      <a routerLink="/about" class="feature-button">
+        <fa-icon [icon]="icons.faLink"></fa-icon>
+        <span>Mehr Infos</span>
+      </a>
+    </div>
+    <div class="feature-image">
+      <img
+        src="images/weinwanderung.jpg"
+        alt="Zwei Weinflaschen mit Alpaka-Etikett liegen im hohen Gras" />
+    </div>
+  </section>
+</div>

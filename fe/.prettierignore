@@ -1,0 +1,25 @@
+# Ignoring build files
+/dist
+/out-tsc
+
+# Ignoring Firebase files
+/firebase.json
+/firestore.indexes.json
+/firestore.rules
+
+# Ignoring node_modules
+/node_modules
+
+# Ignoring configuration files
+/.angular.json
+/tsconfig.json
+/tsconfig.app.json
+/tsconfig.spec.json
+/package-lock.json
+/package.json
+
+# Ignoring all assets
+/public
+
+# Ignoring global type definitions
+/src/global.d.ts

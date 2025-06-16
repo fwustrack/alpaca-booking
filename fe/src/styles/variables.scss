@@ -1,0 +1,50 @@
+:root {
+  /* ------------------------- */
+  /* Colors                    */
+  /* ------------------------- */
+
+  --text-primary: #393e43;
+  --text-secondary: #8f9294;
+
+  --accent-color: #ffc400;
+  --accent-color-secondary: #33a1fd;
+
+  /* ------------------------- */
+  /* Spacing & Sizing          */
+  /* ------------------------- */
+
+  --border-radius-round: 9999px;
+
+  --header-height: 96px;
+
+  --spacer-1: 0.25rem;
+  --spacer-2: 0.5rem;
+  --spacer-3: 1rem;
+  --spacer-4: 1.5rem;
+  --spacer-5: 2rem;
+  --spacer-6: 3rem;
+  --spacer-7: 4rem;
+  --spacer-8: 5rem;
+  --spacer-9: 7.5rem;
+
+  /* ------------------------- */
+  /* Responsive Layout         */
+  /* ------------------------- */
+
+  --max-width: 100%;
+
+  /* Für Tablets und kleine Desktops (z.B. Laptops) */
+  @media (min-width: 992px) {
+    --max-width: 960px;
+  }
+
+  /* Für Standard-Desktops */
+  @media (min-width: 1200px) {
+    --max-width: 1140px;
+  }
+
+  /* Für sehr große Bildschirme (Widescreen) */
+  @media (min-width: 1400px) {
+    --max-width: 1320px;
+  }
+}

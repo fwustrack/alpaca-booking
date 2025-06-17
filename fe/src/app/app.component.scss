@@ -1,19 +1,17 @@
-.logo {
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin-right: 2rem;
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
 }
 
-.content {
-  padding: 1rem;
+:host ::ng-deep router-outlet + * {
+  flex: 1;
 }
 
-@media (max-width: 600px) {
-  .logo {
-    font-size: 1rem;
-    margin-right: 1rem;
-  }
-  .content {
-    padding: 0.5rem;
-  }
+.pre-header {
+  width: 100%;
+  height: calc(var(--header-height) / 2 + var(--spacer-5));
+  background: #fff;
+  position: fixed;
+  z-index: 1;
 }

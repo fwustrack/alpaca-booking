@@ -1,8 +1,13 @@
 import { Routes } from '@angular/router';
-import { LoginPage } from './pages/login-page';
-import { AnimalPage } from './pages/animal-page';
+import { AnimalpageComponent } from './pages/animalpage/animalpage.component';
+import { DirectionspageComponent } from './pages/directionspage/directionspage.component';
+import { HomepageComponent } from './pages/homepage/homepage.component';
+import { LoginpageComponent } from './pages/loginpage/loginpage.component';
 
 export const routes: Routes = [
-  { path: 'login', component: LoginPage },
-  { path: 'animals', component: AnimalPage },
+  { path: '', component: HomepageComponent },
+  { path: 'login', component: LoginpageComponent },
+  { path: 'animals', component: AnimalpageComponent },
+  { path: 'directions', component: DirectionspageComponent },
+  { path: '**', pathMatch: 'full', redirectTo: '' },
 ];

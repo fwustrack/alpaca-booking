@@ -1,0 +1,39 @@
+@if (animal(); as animal) {
+  <p-card [style]="{ width: '300px' }" class="animal-card">
+    <ng-template pTemplate="header">
+      <div class="card-header">
+        <h2>{{ animal.name }}</h2>
+        @if (!animal.hasCurrentSponsorship && animal.sponsorshipAvailable) {
+          <p-tag severity="info" value="Patenschaft verfügbar"> </p-tag>
+        }
+      </div>
+    </ng-template>
+
+    <p>{{ animal.teaser }}</p>
+    <p>{{ animal.description }}</p>
+
+    <ng-template pTemplate="footer">
+      @if (animal.sponsorshipAvailable || animal.hasCurrentSponsorship) {
+        <div class="sponsorship-info">
+          @if (animal.hasCurrentSponsorship) {
+            <div class="current-sponsor">
+              @if (animal.sponsorCustomText) {
+                <p class="sponsor-message">
+                  {{ animal.sponsorCustomText }}
+                </p>
+              } @else if (animal.sponsorName) {
+                <p class="sponsor-message">
+                  Die Patenschaft für das Jahr 2025 ist an {{ animal.sponsorName }}
+                  vergeben.
+                </p>
+              }
+            </div>
+          } @else if (!animal.hasCurrentSponsorship && animal.sponsorshipAvailable) {
+            <p-button label="Pate werden" styleClass="p-button-outlined p-button-primary">
+            </p-button>
+          }
+        </div>
+      }
+    </ng-template>
+  </p-card>
+}

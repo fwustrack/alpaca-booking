@@ -1,0 +1,41 @@
+* {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+body {
+  background: #fff;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.content-container {
+  max-width: var(--max-width);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: calc(var(--header-height) + var(--spacer-9));
+  margin-bottom: var(--spacer-7);
+  padding-left: var(--spacer-4);
+  padding-right: var(--spacer-4);
+}

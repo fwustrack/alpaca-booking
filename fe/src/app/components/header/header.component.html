@@ -10,13 +10,37 @@
   </ul>
 </nav>
 
-<nav class="secondary-nav">
-  <ul>
-    <li><a routerLink="/directions" routerLinkActive="active">Anfahrt</a></li>
-    <li>
-      <a href="https://www.instagram.com/alpakas_vom_rosenhof" class="socal-icon-link"
-        ><fa-icon [icon]="icons.faInstagram"></fa-icon
-      ></a>
-    </li>
-  </ul>
-</nav>
+<div class="header-right">
+  <nav class="secondary-nav">
+    <ul>
+      <li><a routerLink="/directions" routerLinkActive="active">Anfahrt</a></li>
+      @if (isAuthenticated()) {
+        <li><a routerLink="/admin" routerLinkActive="active">Admin</a></li>
+      }
+      <li>
+        <a href="https://www.instagram.com/alpakas_vom_rosenhof" class="socal-icon-link"
+          ><fa-icon [icon]="icons.faInstagram"></fa-icon
+        ></a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="auth-section">
+    @if (isAuthenticated()) {
+      <div class="auth-status">
+        <span class="status-indicator">
+          <span class="status-dot"></span>
+          <span class="status-text">Admin</span>
+        </span>
+        <button class="logout-btn" (click)="onLogout()" title="Abmelden">
+          <fa-icon [icon]="icons.faSignOut"></fa-icon>
+        </button>
+      </div>
+    } @else {
+      <a routerLink="/login" class="login-btn">
+        <fa-icon [icon]="icons.faUser"></fa-icon>
+        <span>Anmelden</span>
+      </a>
+    }
+  </div>
+</div>

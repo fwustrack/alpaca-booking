@@ -1,16 +1,23 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { IftaLabelModule } from 'primeng/iftalabel';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
-import { catchError, EMPTY } from 'rxjs';
+import { catchError, EMPTY, finalize } from 'rxjs';
 import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-loginpage',
-  imports: [PasswordModule, ReactiveFormsModule, InputTextModule, IftaLabelModule, ButtonModule],
+  imports: [
+    PasswordModule,
+    ReactiveFormsModule,
+    InputTextModule,
+    IftaLabelModule,
+    ButtonModule,
+    RouterModule,
+  ],
   templateUrl: './loginpage.component.html',
   styleUrl: './loginpage.component.scss',
   host: {
@@ -22,35 +29,45 @@ export class LoginpageComponent {
   private router = inject(Router);
   private authService = inject(AuthService);
 
+  isLoading = false;
+
   loginForm = this.fb.group({
-    username: [''],
-    password: [''],
+    username: ['', [Validators.required, Validators.minLength(2)]],
+    password: ['', [Validators.required, Validators.minLength(3)]],
   });
 
   constructor() {
     if (this.authService.isTokenValid()) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/admin']);
     }
   }
 
   onSubmit() {
+    if (this.loginForm.invalid || this.isLoading) {
+      return;
+    }
+
     const { username, password } = this.loginForm.value;
 
     if (!username || !password) {
-      alert('Bitte E-Mail und Passwort eingeben');
       return;
     }
+
+    this.isLoading = true;
 
     this.authService
       .login(username, password)
       .pipe(
         catchError(() => {
-          alert('Login fehlgeschlagen');
+          alert('Anmeldung fehlgeschlagen. Bitte überprüfen Sie Ihre Zugangsdaten.');
           return EMPTY;
+        }),
+        finalize(() => {
+          this.isLoading = false;
         }),
       )
       .subscribe(() => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/admin']);
       });
   }
 }

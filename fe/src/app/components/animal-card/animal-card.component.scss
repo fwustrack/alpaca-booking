@@ -1,38 +1,202 @@
 .animal-card {
-  width: 100%;
-  transition: transform 0.2s ease-in-out;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--surface-200);
+  transition: all 0.3s ease-in-out;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 
   &:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
   }
+}
+
+/* Card Image */
+.card-image {
+  position: relative;
+  height: 200px;
+  background: linear-gradient(135deg, var(--surface-100) 0%, var(--surface-200) 100%);
+  overflow: hidden;
+
+  .image-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--surface-500);
+    text-align: center;
+    padding: var(--spacer-3);
+
+    i {
+      font-size: 3rem;
+      margin-bottom: var(--spacer-2);
+    }
+
+    span {
+      font-weight: 600;
+      font-size: 1.125rem;
+    }
+  }
+
+  .availability-badge {
+    position: absolute;
+    top: var(--spacer-3);
+    right: var(--spacer-3);
+    background: var(--accent-color);
+    color: white;
+    padding: var(--spacer-1) var(--spacer-2);
+    border-radius: var(--border-radius-round);
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+    i {
+      font-size: 0.75rem;
+    }
+  }
+}
+
+/* Card Content */
+.card-content {
+  padding: var(--spacer-4);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-header {
-  padding: var(--spacer-3);
-  background-color: var(--surface-ground);
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  gap: var(--spacer-3);
+  align-items: flex-start;
+  gap: var(--spacer-2);
+  margin-bottom: var(--spacer-3);
 
-  h2 {
+  .animal-name {
     color: var(--surface-900);
-    font-size: 1.5rem;
+    font-size: 1.375rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .status-badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px var(--spacer-2);
+    border-radius: var(--border-radius-round);
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+
+    &.sponsored {
+      background: var(--success-color);
+      color: white;
+    }
+
+    i {
+      font-size: 0.75rem;
+    }
   }
 }
 
+.animal-teaser {
+  color: var(--surface-800);
+  font-weight: 600;
+  margin: 0 0 var(--spacer-2);
+  line-height: 1.5;
+}
+
+.animal-description {
+  color: var(--text-color-secondary);
+  margin: 0 0 var(--spacer-4);
+  line-height: 1.6;
+  flex: 1;
+}
+
+/* Sponsorship Info */
 .sponsorship-info {
-  margin-top: var(--spacer-3);
+  margin-top: auto;
   padding-top: var(--spacer-3);
   border-top: 1px solid var(--surface-200);
 
   .current-sponsor {
-    margin-bottom: var(--spacer-3);
+    .sponsor-message {
+      background: var(--surface-50);
+      border-left: 3px solid var(--accent-color-secondary);
+      padding: var(--spacer-3);
+      border-radius: 0 8px 8px 0;
+      position: relative;
+
+      i {
+        color: var(--accent-color-secondary);
+        font-size: 1rem;
+        margin-bottom: var(--spacer-2);
+      }
+
+      p {
+        margin: 0 0 var(--spacer-2);
+        font-style: italic;
+        color: var(--surface-700);
+        line-height: 1.5;
+      }
+
+      .sponsor-name {
+        color: var(--surface-600);
+        font-weight: 600;
+        font-size: 0.875rem;
+      }
+    }
+
+    .sponsor-info {
+      display: flex;
+      align-items: center;
+      gap: var(--spacer-2);
+      color: var(--surface-700);
+      font-weight: 500;
+
+      i {
+        color: var(--accent-color-secondary);
+      }
+    }
   }
 
-  .sponsor-message {
-    font-style: italic;
-    color: var(--text-color-secondary);
-    margin-top: var(--spacer-2);
+  .sponsor-button {
+    width: 100%;
+    background: var(--accent-color-secondary);
+    color: white;
+    border: none;
+    padding: var(--spacer-3) var(--spacer-4);
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacer-2);
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background: var(--accent-color);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    i {
+      font-size: 0.875rem;
+    }
   }
 }

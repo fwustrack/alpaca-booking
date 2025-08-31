@@ -1,13 +1,55 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <p-iftalabel>
-    <input type="text" pInputText formControlName="username" />
-    <label for="username">Benutzername</label>
-  </p-iftalabel>
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <div class="logo-section">
+        <img src="/logos/alpaca-logo.png" alt="Alpaca Logo" class="logo" />
+        <h1>Admin Login</h1>
+        <p>Melde dich an, um das Admin-Panel zu verwalten</p>
+      </div>
+    </div>
 
-  <p-iftalabel>
-    <p-password formControlName="password" [feedback]="false" />
-    <label for="username">Passwort</label>
-  </p-iftalabel>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+      <div class="form-group">
+        <p-iftalabel>
+          <input
+            type="text"
+            pInputText
+            formControlName="username"
+            class="form-input"
+            id="username"
+            autocomplete="username" />
+          <label for="username">Benutzername oder E-Mail</label>
+        </p-iftalabel>
+      </div>
 
-  <p-button label="Login" type="submit" />
-</form>
+      <div class="form-group">
+        <p-iftalabel>
+          <p-password
+            formControlName="password"
+            [feedback]="false"
+            [toggleMask]="true"
+            class="form-input"
+            id="password"
+            autocomplete="current-password" />
+          <label for="password">Passwort</label>
+        </p-iftalabel>
+      </div>
+
+      <div class="form-actions">
+        <p-button
+          label="Anmelden"
+          type="submit"
+          [disabled]="!loginForm.valid || isLoading"
+          [loading]="isLoading"
+          styleClass="w-full login-button"
+          size="large" />
+      </div>
+    </form>
+
+    <div class="login-footer">
+      <p class="back-to-site">
+        <a routerLink="/">← Zurück zur Webseite</a>
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { AuthGuard } from './auth/auth.guard';
+import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 import { AnimalpageComponent } from './pages/animalpage/animalpage.component';
 import { DirectionspageComponent } from './pages/directionspage/directionspage.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
@@ -9,5 +11,6 @@ export const routes: Routes = [
   { path: 'login', component: LoginpageComponent },
   { path: 'animals', component: AnimalpageComponent },
   { path: 'directions', component: DirectionspageComponent },
+  { path: 'admin', component: AdminPanelComponent, canActivate: [AuthGuard] },
   { path: '**', pathMatch: 'full', redirectTo: '' },
 ];

@@ -1,12 +1,113 @@
-h1 {
-  text-align: center;
-  margin-bottom: var(--spacer-5);
-  color: var(--surface-900);
+.animals-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacer-4);
 }
 
-.animal-grid {
+/* Hero Section */
+.hero-section {
+  text-align: center;
+  margin-bottom: var(--spacer-8);
+  padding: var(--spacer-6) 0;
+  background: linear-gradient(135deg, var(--surface-50) 0%, var(--surface-100) 100%);
+  border-radius: 16px;
+  margin: 0 calc(-1 * var(--spacer-4)) var(--spacer-8);
+  padding: var(--spacer-6) var(--spacer-4);
+
+  .page-title {
+    color: var(--surface-900);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacer-3);
+    line-height: 1.2;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+
+  .page-subtitle {
+    color: var(--text-color-secondary);
+    font-size: 1.125rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
+  }
+}
+
+/* Stats Section */
+.stats-section {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 300px);
-  gap: var(--spacer-5);
-  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacer-4);
+  margin-bottom: var(--spacer-8);
+
+  .stat-card {
+    background: white;
+    border-radius: 12px;
+    padding: var(--spacer-5) var(--spacer-4);
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--surface-200);
+    transition:
+      transform 0.2s ease-in-out,
+      box-shadow 0.2s ease-in-out;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent-color-secondary);
+      margin-bottom: var(--spacer-2);
+      line-height: 1;
+    }
+
+    .stat-label {
+      color: var(--text-color-secondary);
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+  }
+}
+
+/* Animals Section */
+.animals-section {
+  .animal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--spacer-5);
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+      gap: var(--spacer-4);
+    }
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: var(--spacer-8) var(--spacer-4);
+    color: var(--text-color-secondary);
+
+    h3 {
+      margin: var(--spacer-4) 0 var(--spacer-2);
+      color: var(--surface-600);
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 0;
+      font-size: 1rem;
+    }
+  }
 }

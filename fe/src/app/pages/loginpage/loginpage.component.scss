@@ -136,13 +136,11 @@
 
 .login-footer {
   text-align: center;
-  padding: 0 var(--spacer-5) var(--spacer-5);
+  padding: var(--spacer-3);
   border-top: 1px solid rgba(0, 0, 0, 0.05);
   background: rgba(255, 255, 255, 0.5);
 
   .back-to-site {
-    margin: var(--spacer-3) 0 0;
-
     a {
       color: var(--text-secondary);
       text-decoration: none;

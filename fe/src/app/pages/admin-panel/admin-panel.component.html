@@ -1,12 +1,12 @@
 <div class="admin-panel">
-  <h1>Admin Panel</h1>
+  <h1>Admin-Panel</h1>
 
   <div class="admin-sections">
     <div class="admin-card animal-management">
       <div class="card-header">
-        <h2>Animal Management</h2>
+        <h2>Tierverwaltung</h2>
         <p-button
-          label="Add New Animal"
+          label="Neues Tier hinzufügen"
           icon="pi pi-plus"
           (onClick)="openAddDialog()"
           styleClass="p-button-success">
@@ -22,10 +22,10 @@
         <ng-template pTemplate="header">
           <tr>
             <th>Name</th>
-            <th>Description</th>
-            <th>Sponsorship Available</th>
-            <th>Current Sponsor</th>
-            <th>Actions</th>
+            <th>Beschreibung</th>
+            <th>Patenschaft verfügbar</th>
+            <th>Aktueller Pate</th>
+            <th>Aktionen</th>
           </tr>
         </ng-template>
 
@@ -41,19 +41,19 @@
                     : 'pi pi-times text-red-500'
                 "></i>
             </td>
-            <td>{{ animal.hasCurrentSponsorship ? animal.sponsorName || 'Yes' : 'None' }}</td>
+            <td>{{ animal.hasCurrentSponsorship ? animal.sponsorName || 'Ja' : 'Keine' }}</td>
             <td>
               <p-button
                 icon="pi pi-pencil"
                 (onClick)="openEditDialog(animal)"
                 styleClass="p-button-text p-button-info mr-2"
-                pTooltip="Edit">
+                pTooltip="Bearbeiten">
               </p-button>
               <p-button
                 icon="pi pi-trash"
                 (onClick)="deleteAnimal(animal)"
                 styleClass="p-button-text p-button-danger"
-                pTooltip="Delete">
+                pTooltip="Löschen">
               </p-button>
             </td>
           </tr>
@@ -61,20 +61,20 @@
 
         <ng-template pTemplate="emptymessage">
           <tr>
-            <td colspan="5" class="text-center">No animals found</td>
+            <td colspan="5" class="text-center">Keine Tiere gefunden</td>
           </tr>
         </ng-template>
       </p-table>
     </div>
 
     <div class="admin-card">
-      <h2>User Management</h2>
-      <p>Manage user accounts and permissions.</p>
+      <h2>Benutzerverwaltung</h2>
+      <p>Verwalten Sie Benutzerkonten und Berechtigungen.</p>
     </div>
 
     <div class="admin-card">
-      <h2>System Settings</h2>
-      <p>Configure application settings and preferences.</p>
+      <h2>Systemeinstellungen</h2>
+      <p>Konfigurieren Sie Anwendungseinstellungen und Präferenzen.</p>
     </div>
   </div>
 </div>
@@ -95,7 +95,7 @@
         pInputText
         [value]="animalForm().name"
         (input)="updateFormField('name', $any($event.target).value)"
-        placeholder="Animal name"
+        placeholder="Tiername"
         class="w-full" />
     </div>
 
@@ -107,17 +107,17 @@
         pInputText
         [value]="animalForm().teaser"
         (input)="updateFormField('teaser', $any($event.target).value)"
-        placeholder="Short teaser text"
+        placeholder="Kurzer Teaser-Text"
         class="w-full" />
     </div>
 
     <div class="field">
-      <label for="description">Description</label>
+      <label for="description">Beschreibung</label>
       <textarea
         id="description"
         [value]="animalForm().description"
         (input)="updateFormField('description', $any($event.target).value)"
-        placeholder="Detailed description"
+        placeholder="Detaillierte Beschreibung"
         rows="4"
         class="w-full p-inputtext">
       </textarea>
@@ -130,7 +130,7 @@
         [ngModel]="animalForm().sponsorshipAvailable"
         (onChange)="updateFormField('sponsorshipAvailable', $event.checked)">
       </p-checkbox>
-      <label for="sponsorshipAvailable">Sponsorship Available</label>
+      <label for="sponsorshipAvailable">Patenschaft verfügbar</label>
     </div>
 
     <div class="field-checkbox">
@@ -140,29 +140,29 @@
         [ngModel]="animalForm().hasCurrentSponsorship"
         (onChange)="updateFormField('hasCurrentSponsorship', $event.checked)">
       </p-checkbox>
-      <label for="hasCurrentSponsorship">Has Current Sponsorship</label>
+      <label for="hasCurrentSponsorship">Hat aktuelle Patenschaft</label>
     </div>
 
     @if (animalForm().hasCurrentSponsorship) {
       <div class="field">
-        <label for="sponsorName">Sponsor Name</label>
+        <label for="sponsorName">Name des Paten</label>
         <input
           id="sponsorName"
           type="text"
           pInputText
           [value]="animalForm().sponsorName"
           (input)="updateFormField('sponsorName', $any($event.target).value)"
-          placeholder="Sponsor name"
+          placeholder="Name des Paten"
           class="w-full" />
       </div>
 
       <div class="field">
-        <label for="sponsorCustomText">Custom Sponsor Text</label>
+        <label for="sponsorCustomText">Individueller Paten-Text</label>
         <textarea
           id="sponsorCustomText"
           [value]="animalForm().sponsorCustomText"
           (input)="updateFormField('sponsorCustomText', $any($event.target).value)"
-          placeholder="Custom text from sponsor"
+          placeholder="Individueller Text vom Paten"
           rows="3"
           class="w-full p-inputtext">
         </textarea>
@@ -171,10 +171,14 @@
   </div>
 
   <ng-template pTemplate="footer">
-    <p-button label="Cancel" icon="pi pi-times" (onClick)="hideDialog()" styleClass="p-button-text">
+    <p-button
+      label="Abbrechen"
+      icon="pi pi-times"
+      (onClick)="hideDialog()"
+      styleClass="p-button-text">
     </p-button>
     <p-button
-      label="Save"
+      label="Speichern"
       icon="pi pi-check"
       (onClick)="saveAnimal()"
       styleClass="p-button-success">
@@ -183,4 +187,3 @@
 </p-dialog>
 
 <p-confirmDialog></p-confirmDialog>
-<p-toast></p-toast>

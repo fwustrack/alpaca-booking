@@ -1,4 +1,4 @@
-import { Component, inject, input, signal, HostListener } from '@angular/core';
+import { Component, inject, input, signal, effect } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { MessageService } from 'primeng/api';
@@ -7,16 +7,17 @@ import { ICON_CONFIG } from '../../config/icon.config';
 import { ScrollService } from '../../services/scroll.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss',
+  selector: 'app-mobile-header',
+  templateUrl: './mobile-header.component.html',
+  styleUrl: './mobile-header.component.scss',
   imports: [FaIconComponent, RouterModule],
   host: {
     '[class.header--scrolled]': 'isScrolled()',
     '[class.is-homepage]': 'isHomepage()',
+    '[class.menu-open]': 'isMenuOpen()',
   },
 })
-export class HeaderComponent {
+export class MobileHeaderComponent {
   private scrollService = inject(ScrollService);
   private authService = inject(AuthService);
   private messageService = inject(MessageService);
@@ -26,14 +27,25 @@ export class HeaderComponent {
 
   isHomepage = input.required<boolean>();
   isScrolled = this.scrollService.isScrolled;
-  isDropdownOpen = signal(false);
+  isMenuOpen = signal(false);
 
-  toggleDropdown(): void {
-    this.isDropdownOpen.update((open) => !open);
+  constructor() {
+    // Handle body scroll prevention when menu is open
+    effect(() => {
+      if (this.isMenuOpen()) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    });
   }
 
-  closeDropdown(): void {
-    this.isDropdownOpen.set(false);
+  toggleMenu(): void {
+    this.isMenuOpen.update((open) => !open);
+  }
+
+  closeMenu(): void {
+    this.isMenuOpen.set(false);
   }
 
   onLogout(): void {
@@ -44,14 +56,6 @@ export class HeaderComponent {
       life: 4000,
     });
     this.authService.logout();
-    this.closeDropdown();
-  }
-
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: Event): void {
-    const target = event.target as Element;
-    if (!target.closest('.admin-dropdown-container')) {
-      this.closeDropdown();
-    }
+    this.closeMenu();
   }
 }

@@ -23,6 +23,20 @@
       nav ul li a {
         color: #fff;
       }
+
+      .admin-dropdown-trigger {
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.3);
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.1);
+          border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .dropdown-arrow {
+          color: rgba(255, 255, 255, 0.7);
+        }
+      }
     }
   }
 
@@ -32,8 +46,7 @@
   }
 
   @media (max-width: 991px) {
-    top: 0;
-    border-radius: 0;
+    display: none;
   }
 }
 
@@ -91,23 +104,102 @@ nav ul {
   gap: var(--spacer-4);
 }
 
-.auth-section {
+/* Admin Dropdown */
+.admin-dropdown-container {
+  position: relative;
   display: flex;
   align-items: center;
+}
 
-  .auth-status {
+.admin-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: 1px solid var(--surface-200);
+  padding: 0.5rem var(--spacer-3);
+  border-radius: 20px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-primary);
+
+  &:hover {
+    background: var(--surface-100);
+    border-color: var(--surface-300);
+  }
+
+  .status-indicator {
     display: flex;
     align-items: center;
-    gap: var(--spacer-2);
-    background: rgba(16, 185, 129, 0.1);
-    border: 1px solid rgba(16, 185, 129, 0.2);
-    border-radius: 20px;
-    padding: 0.5rem var(--spacer-3);
+    gap: 0.5rem;
 
-    .status-indicator {
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--success-color);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    .status-text {
+      color: var(--success-color);
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+  }
+
+  .dropdown-arrow {
+    font-size: 0.75rem;
+    transition: transform 0.2s ease;
+    color: var(--surface-500);
+
+    &.rotated {
+      transform: rotate(180deg);
+    }
+  }
+
+  fa-icon:not(.dropdown-arrow) {
+    font-size: 0.85rem;
+  }
+}
+
+.dropdown-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+}
+
+.admin-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 220px;
+  background: white;
+  border: 1px solid var(--surface-200);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  z-index: 1000;
+  overflow: hidden;
+
+  .dropdown-section {
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--surface-100);
+    }
+  }
+
+  .dropdown-header {
+    padding: var(--spacer-3);
+    background: var(--surface-50);
+
+    .status-info {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: var(--spacer-2);
 
       .status-dot {
         width: 6px;
@@ -120,62 +212,54 @@ nav ul {
       .status-text {
         color: var(--success-color);
         font-weight: 600;
-        font-size: 0.85rem;
-      }
-    }
-
-    .logout-btn {
-      background: none;
-      border: none;
-      color: var(--success-color);
-      cursor: pointer;
-      padding: 0.25rem;
-      border-radius: 4px;
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      &:hover {
-        background: rgba(16, 185, 129, 0.1);
-        color: #0d9488;
+        font-size: 0.875rem;
       }
     }
   }
 
-  .login-btn {
+  .dropdown-item {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    background: var(--accent-color-secondary);
-    color: white;
+    gap: var(--spacer-3);
+    width: 100%;
+    padding: var(--spacer-3);
+    background: none;
+    border: none;
     text-decoration: none;
-    padding: 0.5rem var(--spacer-3);
-    border-radius: 20px;
+    color: var(--text-primary);
     font-weight: 500;
     font-size: 0.9rem;
+    cursor: pointer;
     transition: all 0.2s ease;
 
     &:hover {
-      background: #2563eb;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+      background: var(--surface-100);
+    }
+
+    &.logout-item {
+      color: var(--error-color);
+
+      &:hover {
+        background: rgba(239, 68, 68, 0.1);
+      }
     }
 
     fa-icon {
-      font-size: 0.85rem;
+      font-size: 0.875rem;
+      width: 16px;
+      text-align: center;
     }
   }
+}
 
-  @keyframes pulse {
-    0% {
-      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
-    }
-    70% {
-      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0);
-    }
-    100% {
-      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
-    }
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
   }
 }

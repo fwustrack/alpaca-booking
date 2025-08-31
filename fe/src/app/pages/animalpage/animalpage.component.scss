@@ -1,9 +1,3 @@
-.animals-page {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--spacer-4);
-}
-
 /* Hero Section */
 .hero-section {
   text-align: center;
@@ -15,7 +9,7 @@
   padding: var(--spacer-6) var(--spacer-4);
 
   .page-title {
-    color: var(--surface-900);
+    color: var(--text-primary);
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: var(--spacer-3);
@@ -27,9 +21,8 @@
   }
 
   .page-subtitle {
-    color: var(--text-color-secondary);
+    color: var(--text-secondary);
     font-size: 1.125rem;
-    max-width: 600px;
     margin: 0 auto;
     line-height: 1.6;
 
@@ -71,7 +64,7 @@
     }
 
     .stat-label {
-      color: var(--text-color-secondary);
+      color: var(--text-secondary);
       font-size: 0.875rem;
       font-weight: 500;
       text-transform: uppercase;
@@ -96,7 +89,7 @@
   .empty-state {
     text-align: center;
     padding: var(--spacer-8) var(--spacer-4);
-    color: var(--text-color-secondary);
+    color: var(--text-secondary);
 
     h3 {
       margin: var(--spacer-4) 0 var(--spacer-2);

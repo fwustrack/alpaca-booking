@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { IftaLabelModule } from 'primeng/iftalabel';
 import { InputTextModule } from 'primeng/inputtext';
@@ -28,6 +29,7 @@ export class LoginpageComponent {
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private authService = inject(AuthService);
+  private messageService = inject(MessageService);
 
   isLoading = false;
 
@@ -44,12 +46,24 @@ export class LoginpageComponent {
 
   onSubmit() {
     if (this.loginForm.invalid || this.isLoading) {
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Ungültige Eingabe',
+        detail: 'Bitte füllen Sie alle Felder korrekt aus.',
+        life: 5000,
+      });
       return;
     }
 
     const { username, password } = this.loginForm.value;
 
     if (!username || !password) {
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Fehlende Eingaben',
+        detail: 'Benutzername und Passwort sind erforderlich.',
+        life: 5000,
+      });
       return;
     }
 
@@ -59,7 +73,12 @@ export class LoginpageComponent {
       .login(username, password)
       .pipe(
         catchError(() => {
-          alert('Anmeldung fehlgeschlagen. Bitte überprüfen Sie Ihre Zugangsdaten.');
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Anmeldung fehlgeschlagen',
+            detail: 'Benutzername oder Passwort ist falsch. Bitte versuchen Sie es erneut.',
+            life: 5000,
+          });
           return EMPTY;
         }),
         finalize(() => {
@@ -67,7 +86,16 @@ export class LoginpageComponent {
         }),
       )
       .subscribe(() => {
-        this.router.navigate(['/admin']);
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Anmeldung erfolgreich',
+          life: 5000,
+        });
+
+        // Navigate after a short delay to show the success message
+        setTimeout(() => {
+          this.router.navigate(['/admin']);
+        }, 1000);
       });
   }
 }

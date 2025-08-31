@@ -14,9 +14,6 @@
   <nav class="secondary-nav">
     <ul>
       <li><a routerLink="/directions" routerLinkActive="active">Anfahrt</a></li>
-      @if (isAuthenticated()) {
-        <li><a routerLink="/admin" routerLinkActive="active">Admin</a></li>
-      }
       <li>
         <a href="https://www.instagram.com/alpakas_vom_rosenhof" class="socal-icon-link"
           ><fa-icon [icon]="icons.faInstagram"></fa-icon
@@ -25,22 +22,65 @@
     </ul>
   </nav>
 
-  <div class="auth-section">
+  <div class="admin-dropdown-container">
     @if (isAuthenticated()) {
-      <div class="auth-status">
+      <button class="admin-dropdown-trigger" (click)="toggleDropdown()">
         <span class="status-indicator">
           <span class="status-dot"></span>
           <span class="status-text">Admin</span>
         </span>
-        <button class="logout-btn" (click)="onLogout()" title="Abmelden">
-          <fa-icon [icon]="icons.faSignOut"></fa-icon>
-        </button>
-      </div>
+        <fa-icon
+          [icon]="icons.faChevronDown"
+          class="dropdown-arrow"
+          [class.rotated]="isDropdownOpen()"></fa-icon>
+      </button>
     } @else {
-      <a routerLink="/login" class="login-btn">
+      <button class="admin-dropdown-trigger" (click)="toggleDropdown()">
         <fa-icon [icon]="icons.faUser"></fa-icon>
-        <span>Anmelden</span>
-      </a>
+        <span>Account</span>
+        <fa-icon
+          [icon]="icons.faChevronDown"
+          class="dropdown-arrow"
+          [class.rotated]="isDropdownOpen()"></fa-icon>
+      </button>
+    }
+
+    <!-- Dropdown Menu -->
+    @if (isDropdownOpen()) {
+      <div class="dropdown-overlay" (click)="closeDropdown()"></div>
+      <div class="admin-dropdown-menu">
+        @if (isAuthenticated()) {
+          <div class="dropdown-section">
+            <div class="dropdown-header">
+              <div class="status-info">
+                <span class="status-dot"></span>
+                <span class="status-text">Als Admin angemeldet</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dropdown-section">
+            <a routerLink="/admin" class="dropdown-item" (click)="closeDropdown()">
+              <fa-icon [icon]="icons.faUser"></fa-icon>
+              <span>Admin Panel</span>
+            </a>
+          </div>
+
+          <div class="dropdown-section">
+            <button class="dropdown-item logout-item" (click)="onLogout()">
+              <fa-icon [icon]="icons.faSignOut"></fa-icon>
+              <span>Abmelden</span>
+            </button>
+          </div>
+        } @else {
+          <div class="dropdown-section">
+            <a routerLink="/login" class="dropdown-item" (click)="closeDropdown()">
+              <fa-icon [icon]="icons.faUser"></fa-icon>
+              <span>Anmelden</span>
+            </a>
+          </div>
+        }
+      </div>
     }
   </div>
 </div>

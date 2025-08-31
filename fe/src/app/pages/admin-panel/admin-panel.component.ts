@@ -7,7 +7,6 @@ import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { CheckboxModule } from 'primeng/checkbox';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { ToastModule } from 'primeng/toast';
 import { TooltipModule } from 'primeng/tooltip';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { AnimalService } from '../../services/animal.service';
@@ -24,10 +23,9 @@ import { Animal } from '../../models/animal.model';
     InputTextModule,
     CheckboxModule,
     ConfirmDialogModule,
-    ToastModule,
     TooltipModule,
   ],
-  providers: [ConfirmationService, MessageService],
+  providers: [ConfirmationService],
   templateUrl: './admin-panel.component.html',
   styleUrl: './admin-panel.component.scss',
   host: {
@@ -55,7 +53,7 @@ export class AdminPanelComponent {
     sponsorCustomText: '',
   });
 
-  dialogTitle = computed(() => (this.editMode() ? 'Edit Animal' : 'Add New Animal'));
+  dialogTitle = computed(() => (this.editMode() ? 'Tier bearbeiten' : 'Neues Tier hinzufügen'));
 
   openAddDialog(): void {
     this.editMode.set(false);
@@ -86,8 +84,8 @@ export class AdminPanelComponent {
     if (!formData.name?.trim()) {
       this.messageService.add({
         severity: 'error',
-        summary: 'Error',
-        detail: 'Animal name is required',
+        summary: 'Fehler',
+        detail: 'Tiername ist erforderlich',
       });
       return;
     }
@@ -108,16 +106,16 @@ export class AdminPanelComponent {
         next: () => {
           this.messageService.add({
             severity: 'success',
-            summary: 'Success',
-            detail: 'Animal updated successfully',
+            summary: 'Erfolg',
+            detail: 'Tier erfolgreich aktualisiert',
           });
           this.hideDialog();
         },
         error: () => {
           this.messageService.add({
             severity: 'error',
-            summary: 'Error',
-            detail: 'Failed to update animal',
+            summary: 'Fehler',
+            detail: 'Tier konnte nicht aktualisiert werden',
           });
         },
       });
@@ -126,16 +124,16 @@ export class AdminPanelComponent {
         next: () => {
           this.messageService.add({
             severity: 'success',
-            summary: 'Success',
-            detail: 'Animal created successfully',
+            summary: 'Erfolg',
+            detail: 'Tier erfolgreich erstellt',
           });
           this.hideDialog();
         },
         error: () => {
           this.messageService.add({
             severity: 'error',
-            summary: 'Error',
-            detail: 'Failed to create animal',
+            summary: 'Fehler',
+            detail: 'Tier konnte nicht erstellt werden',
           });
         },
       });
@@ -144,8 +142,8 @@ export class AdminPanelComponent {
 
   deleteAnimal(animal: Animal): void {
     this.confirmationService.confirm({
-      message: `Are you sure you want to delete ${animal.name}?`,
-      header: 'Confirm Delete',
+      message: `Sind Sie sicher, dass Sie ${animal.name} löschen möchten?`,
+      header: 'Löschen bestätigen',
       icon: 'pi pi-exclamation-triangle',
       acceptButtonStyleClass: 'p-button-danger',
       accept: () => {
@@ -153,15 +151,15 @@ export class AdminPanelComponent {
           next: () => {
             this.messageService.add({
               severity: 'success',
-              summary: 'Success',
-              detail: 'Animal deleted successfully',
+              summary: 'Erfolg',
+              detail: 'Tier erfolgreich gelöscht',
             });
           },
           error: () => {
             this.messageService.add({
               severity: 'error',
-              summary: 'Error',
-              detail: 'Failed to delete animal',
+              summary: 'Fehler',
+              detail: 'Tier konnte nicht gelöscht werden',
             });
           },
         });

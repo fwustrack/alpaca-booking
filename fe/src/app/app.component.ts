@@ -2,14 +2,26 @@ import { CommonModule, ViewportScroller } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { MenubarModule } from 'primeng/menubar';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 import { filter } from 'rxjs';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
+import { MobileHeaderComponent } from './components/mobile-header/mobile-header.component';
 import { ICON_CONFIG } from './config/icon.config';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, MenubarModule, HeaderComponent, FooterComponent],
+  imports: [
+    RouterOutlet,
+    CommonModule,
+    MenubarModule,
+    HeaderComponent,
+    MobileHeaderComponent,
+    FooterComponent,
+    ToastModule,
+  ],
+  providers: [MessageService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

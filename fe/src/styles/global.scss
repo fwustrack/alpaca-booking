@@ -38,4 +38,8 @@ h2 {
   margin-bottom: var(--spacer-7);
   padding-left: var(--spacer-4);
   padding-right: var(--spacer-4);
+
+  @media (max-width: 991px) {
+    margin-top: calc(var(--mobile-header-height) + var(--spacer-4));
+  }
 }

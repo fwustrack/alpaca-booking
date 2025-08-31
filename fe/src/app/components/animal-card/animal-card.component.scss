@@ -80,7 +80,7 @@
   margin-bottom: var(--spacer-3);
 
   .animal-name {
-    color: var(--surface-900);
+    color: var(--text-primary);
     font-size: 1.375rem;
     font-weight: 700;
     margin: 0;
@@ -109,14 +109,14 @@
 }
 
 .animal-teaser {
-  color: var(--surface-800);
+  color: var(--text-primary);
   font-weight: 600;
   margin: 0 0 var(--spacer-2);
   line-height: 1.5;
 }
 
 .animal-description {
-  color: var(--text-color-secondary);
+  color: var(--text-secondary);
   margin: 0 0 var(--spacer-4);
   line-height: 1.6;
   flex: 1;

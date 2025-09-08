@@ -13,7 +13,7 @@ import { ScrollService } from '../../services/scroll.service';
   imports: [FaIconComponent, RouterModule],
   host: {
     '[class.header--scrolled]': 'isScrolled()',
-    '[class.is-homepage]': 'isHomepage()',
+    '[class.page-has-top-image]': 'pageHasTopImage()',
   },
 })
 export class HeaderComponent {
@@ -24,7 +24,7 @@ export class HeaderComponent {
   readonly icons = ICON_CONFIG.icons;
   readonly isAuthenticated = this.authService.isAuthenticated;
 
-  isHomepage = input.required<boolean>();
+  pageHasTopImage = input.required<boolean>();
   isScrolled = this.scrollService.isScrolled;
   isDropdownOpen = signal(false);
 

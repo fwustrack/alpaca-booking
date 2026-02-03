@@ -4,22 +4,22 @@ version = "0.1.0"
 description = "Add your description here"
 requires-python = ">=3.13"
 dependencies = [
-    "django>=5.1.6",
-    "mypy>=1.15.0",
-    "djangorestframework>=3.15.2",
-    "psycopg2-binary>=2.9.10",
+    "django>=6.0.0",
+    "mypy>=1.18.1",
+    "djangorestframework>=3.16.0",
+    "psycopg2-binary>=2.9.11",
     "pytz>=2025.1",
     "pyyaml>=6.0.2",
-    "pytest>=8.3.5",
+    "pytest>=9.0.0",
     "pytest-django>=4.11.1",
     "djangorestframework-simplejwt>=5.5.0",
     "django-cors-headers>=4.7.0",
-    "drf-spectacular>=0.28.0",
-    "ruff>=0.8.0",
+    "drf-spectacular>=0.29.0",
+    "ruff>=0.15.0",
 ]
 
 [tool.pytest.ini_options]
-DJANGO_SETTINGS_MODULE = "rosenhof.settings"
+DJANGO_SETTINGS_MODULE = "config.settings"
 [tool.ruff]
 # Exclude a variety of commonly ignored directories.
 exclude = [

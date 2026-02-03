@@ -1,5 +1,5 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
@@ -15,7 +15,6 @@ import { Animal } from '../../models/animal.model';
 @Component({
   selector: 'app-admin-panel',
   imports: [
-    CommonModule,
     FormsModule,
     TableModule,
     ButtonModule,
@@ -23,8 +22,8 @@ import { Animal } from '../../models/animal.model';
     InputTextModule,
     CheckboxModule,
     ConfirmDialogModule,
-    TooltipModule,
-  ],
+    TooltipModule
+],
   providers: [ConfirmationService],
   templateUrl: './admin-panel.component.html',
   styleUrl: './admin-panel.component.scss',

@@ -14,4 +14,8 @@
   background: #fff;
   position: fixed;
   z-index: 1;
+
+  @media (max-width: 991px) {
+    height: 0;
+  }
 }

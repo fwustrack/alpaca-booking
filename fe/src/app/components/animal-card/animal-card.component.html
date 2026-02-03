@@ -1,39 +1,67 @@
 @if (animal(); as animal) {
-  <p-card [style]="{ width: '300px' }" class="animal-card">
-    <ng-template pTemplate="header">
+  <div class="animal-card">
+    <!-- Image Placeholder -->
+    <div class="card-image">
+      <div class="image-placeholder">
+        <i class="pi pi-image"></i>
+        <span>{{ animal.name }}</span>
+      </div>
+      @if (!animal.hasCurrentSponsorship && animal.sponsorshipAvailable) {
+        <div class="availability-badge">
+          <i class="pi pi-heart"></i>
+          <span>Patenschaft verfügbar</span>
+        </div>
+      }
+    </div>
+
+    <!-- Card Content -->
+    <div class="card-content">
       <div class="card-header">
-        <h2>{{ animal.name }}</h2>
-        @if (!animal.hasCurrentSponsorship && animal.sponsorshipAvailable) {
-          <p-tag severity="info" value="Patenschaft verfügbar"> </p-tag>
+        <h2 class="animal-name">{{ animal.name }}</h2>
+        @if (animal.hasCurrentSponsorship) {
+          <div class="status-badge sponsored">
+            <i class="pi pi-check-circle"></i>
+            <span>Gesponsert</span>
+          </div>
         }
       </div>
-    </ng-template>
 
-    <p>{{ animal.teaser }}</p>
-    <p>{{ animal.description }}</p>
+      @if (animal.teaser) {
+        <p class="animal-teaser">{{ animal.teaser }}</p>
+      }
 
-    <ng-template pTemplate="footer">
+      @if (animal.description && animal.description !== animal.teaser) {
+        <p class="animal-description">{{ animal.description }}</p>
+      }
+
+      <!-- Sponsorship Info -->
       @if (animal.sponsorshipAvailable || animal.hasCurrentSponsorship) {
         <div class="sponsorship-info">
           @if (animal.hasCurrentSponsorship) {
             <div class="current-sponsor">
               @if (animal.sponsorCustomText) {
-                <p class="sponsor-message">
-                  {{ animal.sponsorCustomText }}
-                </p>
+                <div class="sponsor-message">
+                  <i class="pi pi-quote-left"></i>
+                  <p>{{ animal.sponsorCustomText }}</p>
+                  @if (animal.sponsorName) {
+                    <span class="sponsor-name">— {{ animal.sponsorName }}</span>
+                  }
+                </div>
               } @else if (animal.sponsorName) {
-                <p class="sponsor-message">
-                  Die Patenschaft für das Jahr 2025 ist an {{ animal.sponsorName }}
-                  vergeben.
-                </p>
+                <div class="sponsor-info">
+                  <i class="pi pi-user"></i>
+                  <span>Pate: {{ animal.sponsorName }}</span>
+                </div>
               }
             </div>
           } @else if (!animal.hasCurrentSponsorship && animal.sponsorshipAvailable) {
-            <p-button label="Pate werden" styleClass="p-button-outlined p-button-primary">
-            </p-button>
+            <button class="sponsor-button" type="button">
+              <i class="pi pi-heart"></i>
+              <span>Pate werden</span>
+            </button>
           }
         </div>
       }
-    </ng-template>
-  </p-card>
+    </div>
+  </div>
 }

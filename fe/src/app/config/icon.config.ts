@@ -1,10 +1,38 @@
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
-import { faLink } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBars,
+  faChevronDown,
+  faClock,
+  faEnvelope,
+  faHeart,
+  faLink,
+  faMountain,
+  faPhone,
+  faSignOut,
+  faStar,
+  faTimes,
+  faUser,
+  faUsers,
+  faWineGlass,
+} from '@fortawesome/free-solid-svg-icons';
 
 export const ICON_CONFIG = {
   icons: {
+    faBars,
+    faChevronDown,
+    faClock,
+    faEnvelope,
+    faHeart,
     faInstagram,
     faLink,
+    faMountain,
+    faPhone,
+    faSignOut,
+    faStar,
+    faTimes,
+    faUser,
+    faUsers,
+    faWineGlass,
   },
 };
 

@@ -1,0 +1,83 @@
+<!-- Mobile Header Bar -->
+<div class="mobile-header-bar">
+  <div class="mobile-logo">
+    <a routerLink="/"><img src="/logos/alpaca-logo.png" />Alpakas vom Rosenhof</a>
+  </div>
+
+  <button
+    class="menu-toggle"
+    (click)="toggleMenu()"
+    [attr.aria-label]="isMenuOpen() ? 'Close menu' : 'Open menu'">
+    <fa-icon [icon]="isMenuOpen() ? icons.faTimes : icons.faBars"></fa-icon>
+  </button>
+</div>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu-overlay" (click)="closeMenu()"></div>
+
+<!-- Mobile Menu -->
+<nav class="mobile-menu" [class.open]="isMenuOpen()">
+  <div class="mobile-menu-content">
+    <!-- Main Navigation -->
+    <div class="mobile-nav-section">
+      <h3>Navigation</h3>
+      <ul class="mobile-nav-list">
+        <li>
+          <a routerLink="/tours-events" routerLinkActive="active" (click)="closeMenu()"
+            >Wanderungen & Events</a
+          >
+        </li>
+        <li>
+          <a routerLink="/animals" routerLinkActive="active" (click)="closeMenu()">Unsere Tiere</a>
+        </li>
+        <li>
+          <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Patenschaft</a>
+        </li>
+        <li>
+          <a routerLink="/directions" routerLinkActive="active" (click)="closeMenu()">Anfahrt</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Admin Section -->
+    @if (isAuthenticated()) {
+      <div class="mobile-nav-section">
+        <h3>Admin</h3>
+        <ul class="mobile-nav-list">
+          <li>
+            <a routerLink="/admin" routerLinkActive="active" (click)="closeMenu()">Admin Panel</a>
+          </li>
+        </ul>
+      </div>
+    }
+
+    <!-- Auth Section -->
+    <div class="mobile-auth-section">
+      @if (isAuthenticated()) {
+        <div class="mobile-auth-status">
+          <div class="status-info">
+            <span class="status-dot"></span>
+            <span class="status-text">Als Admin angemeldet</span>
+          </div>
+          <button class="mobile-logout-btn" (click)="onLogout()">
+            <fa-icon [icon]="icons.faSignOut"></fa-icon>
+            <span>Abmelden</span>
+          </button>
+        </div>
+      } @else {
+        <a routerLink="/login" class="mobile-login-btn" (click)="closeMenu()">
+          <fa-icon [icon]="icons.faUser"></fa-icon>
+          <span>Anmelden</span>
+        </a>
+      }
+    </div>
+
+    <!-- Social Links -->
+    <div class="mobile-social-section">
+      <a href="https://www.instagram.com/alpakas_vom_rosenhof" class="mobile-social-link">
+        <fa-icon [icon]="icons.faInstagram"></fa-icon>
+        <span>Instagram</span>
+      </a>
+    </div>
+  </div>
+</nav>

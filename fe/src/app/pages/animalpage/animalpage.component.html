@@ -1,6 +1,42 @@
-<h1>Unsere Tiere</h1>
-<div class="animal-grid">
-  @for (animal of animals(); track animal) {
-    <app-animal-card [animal]="animal"></app-animal-card>
-  }
+<div class="animals-page">
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <h1 class="page-title">Unsere Tiere</h1>
+    <p class="page-subtitle">
+      Lernen Sie unsere wunderbaren Alpakas kennen und werden Sie Pate für eines unserer Tiere.
+    </p>
+  </div>
+
+  <!-- Stats Section -->
+  <div class="stats-section">
+    <div class="stat-card">
+      <div class="stat-number">{{ animals().length }}</div>
+      <div class="stat-label">Tiere</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">{{ availableSponserships() }}</div>
+      <div class="stat-label">Verfügbare Patenschaften</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">{{ activeSponserships() }}</div>
+      <div class="stat-label">Aktive Patenschaften</div>
+    </div>
+  </div>
+
+  <!-- Animals Grid -->
+  <div class="animals-section">
+    @if (animals().length === 0) {
+      <div class="empty-state">
+        <i class="pi pi-heart" style="font-size: 3rem; color: var(--surface-400)"></i>
+        <h3>Noch keine Tiere verfügbar</h3>
+        <p>Schauen Sie bald wieder vorbei!</p>
+      </div>
+    } @else {
+      <div class="animal-grid">
+        @for (animal of animals(); track animal.id) {
+          <app-animal-card [animal]="animal"></app-animal-card>
+        }
+      </div>
+    }
+  </div>
 </div>

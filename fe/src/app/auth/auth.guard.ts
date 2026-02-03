@@ -10,7 +10,6 @@ export class AuthGuard implements CanActivate {
   router = inject(Router);
 
   canActivate(): boolean {
-    const token = localStorage.getItem('token');
     if (this.authService.isTokenValid()) {
       return true;
     } else {

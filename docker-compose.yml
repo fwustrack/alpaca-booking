@@ -4,7 +4,7 @@ services:
     command: uv run python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./alpacabooking:/app/alpacabooking/
-      - ./rosenhof:/app/rosenhof/
+      - ./config:/app/config/
     ports:
       - "8000:8000"
     env_file:

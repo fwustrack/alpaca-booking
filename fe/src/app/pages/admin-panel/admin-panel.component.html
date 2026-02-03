@@ -13,12 +13,7 @@
         </p-button>
       </div>
 
-      <p-table
-        [value]="animals()"
-        [paginator]="true"
-        [rows]="10"
-        [responsive]="true"
-        styleClass="p-datatable-striped">
+      <p-table [value]="animals()" [paginator]="true" [rows]="10" styleClass="p-datatable-striped">
         <ng-template pTemplate="header">
           <tr>
             <th>Name</th>

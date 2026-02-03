@@ -1,4 +1,4 @@
-import { CommonModule, ViewportScroller } from '@angular/common';
+import { ViewportScroller } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { MenubarModule } from 'primeng/menubar';
@@ -14,7 +14,6 @@ import { ICON_CONFIG } from './config/icon.config';
   selector: 'app-root',
   imports: [
     RouterOutlet,
-    CommonModule,
     MenubarModule,
     HeaderComponent,
     MobileHeaderComponent,

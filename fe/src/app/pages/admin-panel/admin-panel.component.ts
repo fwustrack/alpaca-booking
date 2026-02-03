@@ -22,8 +22,8 @@ import { Animal } from '../../models/animal.model';
     InputTextModule,
     CheckboxModule,
     ConfirmDialogModule,
-    TooltipModule
-],
+    TooltipModule,
+  ],
   providers: [ConfirmationService],
   templateUrl: './admin-panel.component.html',
   styleUrl: './admin-panel.component.scss',

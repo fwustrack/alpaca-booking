@@ -18,8 +18,8 @@ import { ICON_CONFIG } from './config/icon.config';
     HeaderComponent,
     MobileHeaderComponent,
     FooterComponent,
-    ToastModule
-],
+    ToastModule,
+  ],
   providers: [MessageService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

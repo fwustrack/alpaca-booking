@@ -440,3 +440,4 @@ pyrightconfig.json
 
 ### Project specific
 env/secrets*.env
+.vscode

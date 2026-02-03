@@ -46,7 +46,9 @@ class TicketType(models.Model):
     name = models.CharField(max_length=32)
     description = models.TextField()
     price = models.FloatField()
-    event_type = models.ForeignKey('EventType', on_delete=models.PROTECT, related_name='ticket_types')
+    event_type = models.ForeignKey(
+        "EventType", on_delete=models.PROTECT, related_name="ticket_types"
+    )
 
     def natural_key(self):
         return (self.name, self.event_type)
@@ -56,7 +58,9 @@ class TicketType(models.Model):
 
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=['name', 'event_type'], name='unique_name_event_type')
+            models.UniqueConstraint(
+                fields=["name", "event_type"], name="unique_name_event_type"
+            )
         ]
 
 
@@ -67,8 +71,10 @@ class ResourceCapacityManager(models.Manager):
 
 class ResourceCapacity(models.Model):
     objects = ResourceCapacityManager()
-    event_type = models.ForeignKey('EventType', on_delete=models.PROTECT, related_name='capacities')
-    resource_type = models.ForeignKey('ResourceType', on_delete=models.PROTECT)
+    event_type = models.ForeignKey(
+        "EventType", on_delete=models.PROTECT, related_name="capacities"
+    )
+    resource_type = models.ForeignKey("ResourceType", on_delete=models.PROTECT)
     quantity = models.PositiveIntegerField(default=0)
 
     def natural_key(self):
@@ -79,7 +85,10 @@ class ResourceCapacity(models.Model):
 
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=['resource_type', 'event_type'], name='unique_resource_type_event_type')
+            models.UniqueConstraint(
+                fields=["resource_type", "event_type"],
+                name="unique_resource_type_event_type",
+            )
         ]
 
 
@@ -90,8 +99,10 @@ class ResourceConsumptionManager(models.Manager):
 
 class ResourceConsumption(models.Model):
     objects = models.Manager()
-    ticket_type = models.ForeignKey('TicketType', on_delete=models.PROTECT, related_name='consumptions')
-    resource_type = models.ForeignKey('ResourceType', on_delete=models.PROTECT)
+    ticket_type = models.ForeignKey(
+        "TicketType", on_delete=models.PROTECT, related_name="consumptions"
+    )
+    resource_type = models.ForeignKey("ResourceType", on_delete=models.PROTECT)
     quantity = models.PositiveIntegerField(default=0)
 
     def natural_key(self):
@@ -100,21 +111,27 @@ class ResourceConsumption(models.Model):
     def __str__(self):
         return f"{self.ticket_type} {self.resource_type} ({str(self.quantity)})"
 
-
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=['resource_type', 'ticket_type'], name='unique_resource_type_ticket_type')
+            models.UniqueConstraint(
+                fields=["resource_type", "ticket_type"],
+                name="unique_resource_type_ticket_type",
+            )
         ]
 
 
 class Event(models.Model):
     objects = models.Manager()
     start_time = models.DateTimeField()
-    event_type = models.ForeignKey('EventType', on_delete=models.PROTECT, related_name='events')
+    event_type = models.ForeignKey(
+        "EventType", on_delete=models.PROTECT, related_name="events"
+    )
 
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=['start_time', 'event_type'], name='unique_start_time_event_type')
+            models.UniqueConstraint(
+                fields=["start_time", "event_type"], name="unique_start_time_event_type"
+            )
         ]
 
     def __str__(self):
@@ -123,8 +140,10 @@ class Event(models.Model):
 
 class Ticket(models.Model):
     objects = models.Manager()
-    ticket_type = models.ForeignKey('TicketType', on_delete=models.PROTECT)
-    booking = models.ForeignKey('Booking', on_delete=models.CASCADE, related_name='tickets')
+    ticket_type = models.ForeignKey("TicketType", on_delete=models.PROTECT)
+    booking = models.ForeignKey(
+        "Booking", on_delete=models.CASCADE, related_name="tickets"
+    )
     quantity = models.PositiveIntegerField(validators=[MinValueValidator(1)])
 
     def __str__(self):
@@ -133,7 +152,9 @@ class Ticket(models.Model):
 
 class Booking(models.Model):
     objects = models.Manager()
-    event = models.ForeignKey('Event', on_delete=models.PROTECT, related_name='bookings')
+    event = models.ForeignKey(
+        "Event", on_delete=models.PROTECT, related_name="bookings"
+    )
     title = models.CharField(max_length=32)
     lastname = models.CharField(max_length=32)
     firstname = models.CharField(max_length=32)
@@ -150,7 +171,7 @@ class Booking(models.Model):
 
 
 class Animal(models.Model):
-    objects =models.Manager()
+    objects = models.Manager()
     name = models.CharField(max_length=32, unique=True)
     description = models.TextField(blank=True)
     teaser = models.TextField(blank=True)
@@ -160,7 +181,7 @@ class Animal(models.Model):
     sponsorCustomText = models.TextField(blank=True)
 
     def natural_key(self):
-        return (self.name)
+        return self.name
 
     def __str__(self):
         return self.name

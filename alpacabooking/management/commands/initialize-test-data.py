@@ -26,7 +26,9 @@ class Command(BaseCommand):
         logger.info("creating test data complete")
 
     def create_event(self, event_type: EventType, in_days: int, hour: int) -> None:
-        naive_start_time = datetime.combine(date.today() + timedelta(days=in_days), time(hour))
+        naive_start_time = datetime.combine(
+            date.today() + timedelta(days=in_days), time(hour)
+        )
         start_time = timezone.make_aware(naive_start_time)
         if Event.objects.filter(event_type=event_type, start_time=start_time).exists():
             logger.info("Event already exists")

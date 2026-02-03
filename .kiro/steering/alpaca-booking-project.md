@@ -93,6 +93,21 @@ class Meta:
 
 ## File Structure Guidelines
 
+### Project Root Structure
+```
+alpaca-booking/
+├── scripts/            # Utility scripts for development
+│   ├── README.md       # Script documentation
+│   ├── setup-git-hooks.sh    # Git hook installation
+│   └── format-code.sh         # Manual code formatting
+├── fe/                 # Angular frontend application
+├── alpacabooking/      # Django backend application
+├── config/             # Django project configuration
+├── bruno/              # API testing collections
+├── env/                # Environment configuration files
+└── docker-compose.yml  # Docker development setup
+```
+
 ### Backend Structure
 ```
 alpacabooking/           # Main Django app
@@ -176,6 +191,19 @@ cd fe
 npm run build          # Build for production
 npm run test           # Run unit tests
 npm run format         # Format code with Prettier
+npm run format:check   # Check formatting without fixing
+
+# Code Formatting
+./scripts/setup-git-hooks.sh    # Install git hooks for automatic formatting
+./scripts/format-code.sh        # Format all code files manually
+
+# Python formatting (Docker environment)
+docker-compose exec app-dev uv run ruff format .
+docker-compose exec app-dev uv run ruff check --fix .
+
+# Python formatting (local uv)
+uv run ruff format .
+uv run ruff check --fix .
 
 # Database operations
 docker-compose exec app-dev uv run python manage.py migrate
@@ -274,19 +302,138 @@ docker-compose down
 
 ## Code Quality Standards
 
+### Automated Code Formatting
+
+This project uses automated code formatting to maintain consistent code style across the entire codebase:
+
+- **Frontend (fe/)**: Prettier for TypeScript, HTML, SCSS, and JSON files
+- **Backend (Python)**: Ruff for formatting and linting
+
+#### Code Formatting Configuration
+
+**Prettier Configuration** (`.prettierrc` in `fe/` directory):
+```json
+{
+  "semi": true,
+  "trailingComma": "all",
+  "singleQuote": true,
+  "printWidth": 100,
+  "tabWidth": 2,
+  "bracketSameLine": true
+}
+```
+
+**Ruff Configuration** (in `pyproject.toml`):
+```toml
+[tool.ruff]
+line-length = 88
+indent-width = 4
+target-version = "py313"
+exclude = ["fe", "migrations", "node_modules", ".venv"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
+fixable = ["ALL"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+```
+
+#### Git Hooks for Automatic Formatting
+
+The project includes a pre-commit git hook that automatically formats code before each commit:
+
+**Setup Git Hooks:**
+```bash
+./scripts/setup-git-hooks.sh
+```
+
+**What the hook does:**
+- Automatically formats staged frontend files with Prettier
+- Automatically formats staged Python files with Ruff
+- Runs linting and auto-fixes issues where possible
+- Prevents commits if there are unfixable linting issues
+- Provides clear feedback with colored output
+
+**Manual Formatting:**
+```bash
+# Format all files in the project
+./scripts/format-code.sh
+
+# Format only frontend files
+cd fe && npm run format
+
+# Format only Python files (Docker environment)
+docker-compose exec app-dev uv run ruff format .
+docker-compose exec app-dev uv run ruff check --fix .
+
+# Format only Python files (local uv)
+uv run ruff format .
+uv run ruff check --fix .
+```
+
+#### Agent Guidelines for Code Formatting
+
+**CRITICAL: Always format code when making changes**
+
+1. **Before making any code changes**: Ensure the git hook is installed by running `./scripts/setup-git-hooks.sh`
+
+2. **When writing new code**: Follow the established formatting patterns, but don't worry about perfect formatting - the tools will handle it
+
+3. **After making changes**: The pre-commit hook will automatically format your code, but you can also run manual formatting:
+   - For quick formatting of all files: `./scripts/format-code.sh`
+   - For frontend only: `cd fe && npm run format`
+   - For Python only: Use appropriate Ruff commands based on environment
+
+4. **When reviewing code**: If you notice formatting issues, run the formatters rather than manually fixing spacing/style
+
+5. **For large refactoring**: Run `./scripts/format-code.sh` before starting to ensure a clean baseline
+
+#### Formatting Tool Integration
+
+**Docker Environment:**
+- Ruff is available inside the Docker container via `uv run ruff`
+- Use `docker-compose exec app-dev uv run ruff format .` for formatting
+- Use `docker-compose exec app-dev uv run ruff check --fix .` for linting
+
+**Local Development:**
+- Frontend: Prettier via npm scripts in `fe/` directory
+- Backend: Ruff via `uv run ruff` if uv is installed locally
+
+**IDE Integration:**
+- Configure your IDE to use Prettier for frontend files
+- Configure your IDE to use Ruff for Python files
+- Enable format-on-save for automatic formatting
+
+#### Bypassing Formatting (Use Sparingly)
+
+If you need to commit without running formatting checks:
+```bash
+git commit --no-verify
+```
+
+**Note**: Only use `--no-verify` in exceptional circumstances. The formatting tools are designed to maintain code quality and consistency.
+
 ### Python (Backend)
-- Follow PEP 8 style guidelines
+- Follow PEP 8 style guidelines (enforced by Ruff)
 - Use type hints where appropriate
 - Write comprehensive docstrings
 - Implement proper error handling
 - Use Django best practices for models and views
+- Line length: 88 characters (Black-compatible)
+- Use double quotes for strings
+- Import sorting handled automatically by Ruff
 
 ### TypeScript (Frontend)
 - Use strict TypeScript configuration
 - Implement proper interfaces for all data structures
 - Follow Angular style guide
-- Use Prettier for code formatting
+- Use Prettier for code formatting (configured automatically)
 - Implement proper component lifecycle management
+- Line length: 100 characters
+- Use single quotes for strings
+- Trailing commas in multi-line structures
 
 ## Testing Guidelines
 

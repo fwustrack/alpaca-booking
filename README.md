@@ -41,3 +41,59 @@ Das Frontend (Angular) kann mit der Run-Konfiguration **Frontend** gestartet wer
 
 - Admin Interface: http://localhost:8000/admin
 - API  URL: http://localhost:8000/api
+
+## Code Formatting
+
+This project uses automated code formatting to maintain consistent code style:
+
+- **Frontend (fe/)**: Prettier for TypeScript, HTML, SCSS, and JSON files
+- **Backend (Python)**: Ruff for formatting and linting
+
+### Setup Git Hooks
+
+To automatically format code before each commit, run the setup script:
+
+```bash
+./scripts/setup-git-hooks.sh
+```
+
+This installs a pre-commit hook that will:
+- Format frontend files with Prettier
+- Format and lint Python files with Ruff
+- Prevent commits if there are unfixable linting issues
+
+### Manual Formatting
+
+To format all files manually:
+
+```bash
+./scripts/format-code.sh
+```
+
+### Individual Commands
+
+Format frontend files only:
+```bash
+cd fe
+npm run format
+```
+
+Format Python files only:
+```bash
+# If using Docker development environment
+docker-compose exec app-dev uv run ruff format .
+docker-compose exec app-dev uv run ruff check --fix .
+
+# If using local uv installation
+uv run ruff format .
+uv run ruff check --fix .
+```
+
+### Skipping Git Hooks
+
+If you need to commit without running the formatting checks:
+```bash
+git commit --no-verify
+```
+
+**Note**: Make sure to run `cd fe && npm install --legacy-peer-deps` to install Prettier dependencies before using the formatting tools.

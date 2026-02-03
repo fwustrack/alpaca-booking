@@ -1,14 +1,14 @@
 from rest_framework import serializers
-
-from alpacabooking.models import Event, EventType, TicketType, Ticket, Booking, Animal
-from alpacabooking.booking_service import BookingService
 from rest_framework.fields import SerializerMethodField
+
+from alpacabooking.booking_service import BookingService
+from alpacabooking.models import Animal, Booking, Event, EventType, Ticket, TicketType
 
 
 class EventTypeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = EventType
-        fields = ['name', 'id']
+        fields = ["name", "id"]
 
 
 class EventSerializer(serializers.HyperlinkedModelSerializer):
@@ -16,7 +16,11 @@ class EventSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Event
-        fields = ['start_time', 'event_type', 'id', ]
+        fields = [
+            "start_time",
+            "event_type",
+            "id",
+        ]
 
 
 class TicketTypeSerializer(serializers.HyperlinkedModelSerializer):
@@ -24,7 +28,7 @@ class TicketTypeSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = TicketType
-        fields = ['name', 'description', 'price',  'event_type', 'id']
+        fields = ["name", "description", "price", "event_type", "id"]
 
 
 class TicketSerializer(serializers.ModelSerializer):
@@ -32,7 +36,7 @@ class TicketSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Ticket
-        fields = ['ticket_type', 'quantity']
+        fields = ["ticket_type", "quantity"]
 
 
 class BookingSerializer(serializers.ModelSerializer):
@@ -41,15 +45,28 @@ class BookingSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Booking
-        fields = ['event', 'tickets', 'title', 'lastname', 'firstname', 'email', 'phone_number', 'street', 'city',
-                  'plz', 'comment', 'voucher', 'total_price']
+        fields = [
+            "event",
+            "tickets",
+            "title",
+            "lastname",
+            "firstname",
+            "email",
+            "phone_number",
+            "street",
+            "city",
+            "plz",
+            "comment",
+            "voucher",
+            "total_price",
+        ]
 
     def get_total_price(self, obj):
         return BookingService.calculate_total_price(obj)
 
     def create(self, validated_data):
-        tickets_data = validated_data.pop('tickets')
-        event = validated_data['event']
+        tickets_data = validated_data.pop("tickets")
+        event = validated_data["event"]
         BookingService.validate_booking(event, tickets_data)
         booking = Booking.objects.create(**validated_data)
         for ticket_data in tickets_data:
@@ -62,7 +79,17 @@ class BookingSerializer(serializers.ModelSerializer):
 class AnimalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Animal
-        fields = ['id', 'name', 'description', 'teaser', 'sponsorshipAvailable', 'hasCurrentSponsorship', 'sponsorName', 'sponsorCustomText']
+        fields = [
+            "id",
+            "name",
+            "description",
+            "teaser",
+            "sponsorshipAvailable",
+            "hasCurrentSponsorship",
+            "sponsorName",
+            "sponsorCustomText",
+        ]
+
 
 class UserRolesPermissionsSerializer(serializers.Serializer):
     username = serializers.CharField()

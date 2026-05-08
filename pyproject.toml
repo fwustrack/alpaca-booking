@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Add your description here"
 requires-python = ">=3.13"
 dependencies = [
-    "django>=6.0.0",
+    "django>=6.0.5",
     "mypy>=1.18.1",
     "djangorestframework>=3.16.0",
     "psycopg2-binary>=2.9.11",
